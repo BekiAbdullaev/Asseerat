@@ -22,9 +22,6 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
         window?.rootViewController = coordinator.navigationController
         window?.makeKeyAndVisible()
         coordinator.start()
-        
-        
-       
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {}
