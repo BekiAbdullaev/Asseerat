@@ -1,0 +1,20 @@
+/* 
+  InfoPlist.strings
+  CorporativeBank
+
+  Created by Boburjon Khasanboev on 12/12/24.
+  
+*/
+
+// camera
+NSCameraUsageDescription = "Включите доступ к камере, чтобы иметь возможность сканировать карту или QR-код или установить фотографию профиля.";
+// notification
+NSUserNotificationUsageDescription = "Включите уведомление, чтобы получать уведомления о новостях и других уведомлениях.";
+// contacts
+NSContactsUsageDescription = "Позвольте приложение считывать ваши контакты для быстрого перевода и платежей";
+// face id
+NSFaceIDUsageDescription = "Включите «Face ID» для быстрого входа.";
+// locations
+NSLocationAlwaysUsageDescription = "Позвольте приложению использовать ваше местоположение чтобы найти вам ближайший филиал и услуги";
+NSLocationAlwaysAndWhenInUseUsageDescription = "Позвольте приложению использовать ваше местоположение чтобы найти вам ближайший филиал и услуги";
+NSLocationWhenInUseUsageDescription = "Позвольте приложению использовать ваше местоположение чтобы найти вам ближайший филиал и услуги";

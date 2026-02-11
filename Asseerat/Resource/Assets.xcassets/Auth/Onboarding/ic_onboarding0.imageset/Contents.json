@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "assets-task_01jv5ng19devhv040eerbnk9ag-1747168336_img_1-2.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "assets-task_01jv5ng19devhv040eerbnk9ag-1747168336_img_1-2@2x.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "assets-task_01jv5ng19devhv040eerbnk9ag-1747168336_img_1-2@3x.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

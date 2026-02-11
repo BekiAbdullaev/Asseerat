@@ -1,0 +1,315 @@
+/* 
+  Localizable.strings
+  CorporativeBank
+
+  Created by Abdullaev Bekzod on 14/11/23.
+  
+*/
+// MARK: - Login
+"lang"="Язык";
+"skip"= "Пропустить";
+"getStarted"= "Начать";
+"onboard1Title"="Добро пожаловать в Asseerat";
+"onboard2Title"="Asseerat AI";
+"onboard3Title"="Зикр с друзьями";
+"onboard4Title"="Ежедневная Сунна";
+"onboard5Title"="AR модели";
+"onboard1Detail"="Изучайте жизнь Пророка Мухаммада ﷺ через богатые истории, ежедневное вдохновение и захватывающие впечатления.";
+"onboard2Detail"="Задавайте любые вопросы о жизни Пророка ﷺ и получайте мгновенные, содержательные ответы с помощью Asseerat AI.";
+"onboard3Detail"="Участвуйте в ежедневном зикре и смотрите, как вы ранжируетесь среди своих друзей.";
+"onboard4Detail"="Формируйте хорошие привычки с ежедневными напоминаниями Сунны. Простые, действенные практики на каждый день.";
+"onboard5Detail"="Откройте для себя ключевые моменты и места из Сиры в потрясающем 3D. Оживите историю через интерактивные AR впечатления.";
+
+"passwordValidationString"="Пароль от 8 символов с буквами, цифрой и спецсимволом";
+"logIn"="Войти";
+"loginDetail"="Войдите, чтобы изучить жизнь нашего Пророка, мир ему, и получить достоверные ответы на ваши вопросы";
+"telephone"="Телефон";
+"password"="Пароль";
+"login"="Войти";
+"forgetPassword"="Забыли пароль?";
+"loginWith"="Войти с помощью";
+"dontHaveAccount"="Нет учетной записи?";
+"signUp"="Зарегистрироваться";
+
+// SIGN UP
+"joinUs" = "Присоединяйтесь к нам";
+"joinUsDetail" = "Эта информация помогает нам предоставлять вам более актуальный и интересный контент";
+"name" = "Имя";
+"lastName"= "Фамилия";
+"date"="Дата";
+"register"="Зарегистрироваться";
+"registerTerm"="Регистрируясь, вы принимаете условия";
+"privacyPolicy"="Политики конфиденциальности";
+"areURegistered"="Вы зарегистрированы?";
+"male" ="Мужской";
+"female" = "Женский";
+
+"changePassword"="Изменить пароль";
+"enterPassDetail"="Пожалуйста, введите номер телефона для получения кода подтверждения";
+"verify"="Подтвердить";
+"enterOTPCode"="Введите OTP код";
+"enterOTPCodeDetail"= "Мы отправили SMS с кодом активации на ваш номер телефона \(phone) для получения кода подтверждения";
+"confirm"="Подтвердить";
+"sentNew"="Отправить новый";
+"confirmPassword"="Подтвердите пароль";
+"createPassword"="Создать пароль";
+"resetPassword"="Сбросить пароль";
+"resetPasswordDetail"="Пожалуйста, введите что-то, что вы запомните";
+"setPassword"="Установить пароль";
+"setPasswordDetail"="Вы регистрируетесь с номером телефона +\(String(phone.dropFirst(3)).reformatAsPhone9()). Установите специальный пароль для него.";
+
+
+// HOME
+"home"="Главная";
+"sunnahs"="Сунны";
+"dhikrs"="Зикр";
+
+"home11Title"="Жизнь\nПророка";
+"home11Subtitle"="Вечное путешествие света,\nмилосердия и откровения";
+"home21Title"="Шамаиль";
+"home21Subtitle"="Изучение красоты и характера Пророка";
+"home22Title"="AR опыт";
+"home22Subtitle"="Принесите священные артефакты в ваше пространство";
+"home23Title"="Карты и ключевые места";
+"home23Subtitle"="Переживите походы Пророка";
+"home31Title"="Сподвижники\nПророка";
+"home31Subtitle"="Истории мужества,\nлюбви и веры";
+"home41Title"="Семья\nПророка";
+"home41Subtitle"="Истории любви,\nсилы и веры\nиз его семьи";
+"home51Title"="Сунна в\nповседневной жизни";
+"home51Subtitle"="Практическое применение\nСунны в современной\nповседневной жизни";
+"allowLocationAccess"="Разрешить доступ\nк местоположению";
+"dailySunnahAnalytics"="Аналитика ежедневной сунны";
+
+
+// HOME DETAIL
+"lifeListNavTitle"="Жизнь Пророка";
+"shamailListNavTitle"="Шамаиль";
+"companionListNavTitle"="Сподвижники Пророка";
+"familyListNavTitle"="Семья Пророка";
+"sunnahListNavTitle"="Сунна в повседневной жизни";
+
+"lifeList1Title"="До пророчества";
+"lifeList1Subtitle"="Жизнь правдивости, доверия и размышлений";
+"lifeList2Title"="Мекканский период";
+"lifeList2Subtitle"="Призыв к единобожию с терпением и настойчивостью";
+"lifeList3Title"="Мединский период";
+"lifeList3Subtitle"="Создание справедливого и сострадательного общества";
+"lifeList4Title"="После Пророка";
+"lifeList4Subtitle"="Его наследие живет в сердцах и наставлениях";
+
+"shamailList1Title"="Физическое описание";
+"shamailList1Subtitle"="Благородное присутствие и лучезарное достоинство";
+"shamailList2Title"="Внешность";
+"shamailList2Subtitle"="Простота с изящной чистотой";
+"shamailList3Title"="Привычки в еде";
+"shamailList3Subtitle"="Умеренность с благодарностью";
+"shamailList4Title"="Манеры";
+"shamailList4Subtitle"="Мягкость в речи и поведении";
+"shamailList5Title"="Повседневная жизнь";
+"shamailList5Subtitle"="Жизнь преданности и баланса";
+"shamailList6Title"="Сострадание";
+"shamailList6Subtitle"="Безграничное милосердие ко всему творению";
+
+"companionList1Title"="Десять обещанных раем";
+"companionList1Subtitle"="Пионеры веры, обещанные вечной наградой";
+"companionList2Title"="Четыре праведных халифа";
+"companionList2Subtitle"="Лидеры мудрости, справедливости и пророческого наследия";
+"companionList3Title"="Ученые среди сахабов";
+"companionList3Subtitle"="Хранители знаний и передатчики истины";
+"companionList4Title"="Халифы";
+"companionList4Subtitle"="Попечители уммы и защитники ислама";
+"companionList5Title"="Женщины";
+"companionList5Subtitle"="Женщины силы, благочестия и непоколебимой преданности";
+"companionList6Title"="Молодые";
+"companionList6Subtitle"="Молодые сердца, укрепленные верой.";
+"companionList7Title"="Герои";
+"companionList7Subtitle"="Храбрые души, которые стояли твердо в истине и жертвенности";
+
+"familyList1Title"="Жены";
+"familyList1Subtitle"="Матери верующих, столпы поддержки и мудрости";
+"familyList2Title"="Сыновья";
+"familyList2Subtitle"="Краткие огни любви и утраты в жизни Пророка";
+"familyList3Title"="Дочери";
+"familyList3Subtitle"="Образцы силы и глубокой преданности";
+"familyList4Title"="Ахль уль-Байт";
+"familyList4Subtitle"="Благородная семья, почитаемая в сердце и откровении";
+
+"sunnahList1Title"="Сунна речи и манер";
+"sunnahList1Subtitle"="Изящные слова и благородное поведение в каждом взаимодействии";
+"sunnahList2Title"="Сунна еды и питья";
+"sunnahList2Subtitle"="Благодарность, умеренность и осознанные привычки";
+"sunnahList3Title"="Утренняя сунна";
+"sunnahList3Subtitle"="Начало дня со светом, поминанием и целью";
+"sunnahList4Title"="Сунна сна";
+"sunnahList4Subtitle"="Отдых с поминанием и доверием к Божественному";
+"sunnahList5Title"="Сунна путешествий";
+"sunnahList5Subtitle"="Осознанные путешествия, руководимые молитвой и этикетом";
+"sunnahList6Title"="Еженедельная сунна";
+"sunnahList6Subtitle"="Ритмы поклонения, обновляющие дух";
+"sunnahList7Title"="Сунна в мечети";
+"sunnahList7Subtitle"="Преданность в доме Аллаха.";
+"sunnahList8Title"="Сунна чистоты";
+"sunnahList8Subtitle"="Чистота тела и души как путь к вере";
+"sunnahList9Title"="Сунна одежды";
+"sunnahList9Subtitle"="Скромность, чистота и красота в балансе";
+
+
+// AR EXPERIENCE
+"arEmtpyTitle"="AR опыт скоро!";
+"arEmtpySubtitle"="Мы активно работаем над этой функцией. Следите за обновлениями.";
+"arNavTitle"="AR опыт";
+"arList"="Список AR";
+"unknown"="Неизвестно";
+
+
+// MAPS AND KEY LOCATIONS
+"mapAndKeyLocEmityTitle"="Карты и ключевые места скоро!";
+"mapAndKeyLocEmitySubtitle"="Мы активно работаем над этой функцией. Следите за обновлениями.";
+"mapAndKeyLocNavTitle"="Карты и ключевые места";
+"mapAndKeyLocList"="Список карт и ключевых мест";
+
+
+//AI ASISTANT
+"whatCanIDo"="Что я могу сделать\nдля вас сегодня?";
+"aiAssistant"="AI ассистент";
+"sendMessage"="Отправить сообщение";
+"thinking"="Думаю...";
+"aiTypes"="Типы AI";
+"noChatHistoryTitle"="Нет истории чата";
+"noChatHistorySubtitle"="Отправьте свое первое сообщение, и ваша история будет сохранена и появится здесь.";
+"deleteChatActionTittle"="Удалить чат.";
+"deleteChatActionSubtittle"="Вы действительно хотите удалить этот чат?";
+"chatHistory"="История чата";
+
+
+// SUNNAH
+"goal"="Цель";
+"type"="Тип";
+"freezed"="Заморожено";
+"createSunnahEmpityTitle"="Создайте ежедневную сунну";
+"createSunnahEmpitySubtitle"="Легко создавайте новые записи Сунны для ежедневного обучения.";
+"registerRequiredTitle"="Требуется регистрация";
+"registerRequiredSubtitle"="Чтобы использовать эту функцию, вы должны быть зарегистрированы.";
+"daily"="Ежедневно";
+"weeklyGoals"="Еженедельные цели";
+"monthlyGoals"="Ежемесячные цели";
+"all"="Все";
+
+"delete"="Удалить";
+"deleteHabit"="Удалить привычку.";
+"deleteHabitDetail"="Вы действительно хотите удалить эту привычку?";
+"back"="Назад";
+"complete"="Завершить";
+"unfreeze"="Разморозить";
+"freeze"="Заморозить";
+
+"editSunnah"="Редактировать Сунну";
+"editSunnahs"="Редактировать Сунны";
+"noSunnahEmptyTitle"="Нет сунн.";
+"noSunnahEmptySubtitle"="Нет никаких сунн для редактирования. Как только вы добавите новую, она появится здесь.";
+"archiveSunnahActionTitle"="Архивировать сунну.";
+"archiveSunnahActionSubtitle"="Вы действительно хотите архивировать эту сунну?";
+"archive"="Архив";
+"successefullyArchived"="Успешно архивировано.";
+"deleteSunnahActionTitle"="Удалить сунну.";
+"deleteSunnahActionSubtitle"="Вы действительно хотите удалить эту сунну?";
+"successefullyDeleted"="Успешно удалено.";
+"done"="Готово";
+
+"addNewSunnah"="Добавить новую привычку";
+"standart"="Стандарт";
+"createCustomSunnah"="Создать пользовательскую привычку";
+"addSunnah"="Добавить Сунну";
+"egMorningMeditator"="например, Утренняя медитация";
+"description"="Описание";
+"list"="Список";
+"howOften"="Как часто?";
+"remindMe"="Напомнить мне";
+"myDailyCount"="Мой ежедневный счет";
+"successefullyEdited"="Успешно отредактировано.";
+"successefullyAdded"="Успешно добавлено.";
+"chooseIcon"="Выбрать иконку";
+"period"="Период";
+"repeat"="Повторить";
+"saveGoals"="Сохранить цели";
+"selectTime"="Выбрать время";
+"saveTime"="Сохранить время";
+"setYourDailyReminder"="Установите ежедневное напоминание";
+
+"drinkWater"="Пить воду";
+"takeWalk"="Прогуляться";
+"goToGYM"="Пойти в спортзал";
+"loseWeight"="Похудеть";
+"planMyDay"="Спланировать день";
+"read"="Читать";
+"medidate"="Медитировать";
+"everyDay"="Каждый день";
+"everyWeek"="Каждую неделю";
+"everyDay"="Каждый месяц";
+"selectWeekDays"="Выбрать дни недели";
+
+"analytics"="Аналитика";
+"overview"="Обзор";
+"archived"="Архивировано";
+
+"completedInTotal"="Завершено всего";
+"longestStreakEver"="Самая длинная серия за все время";
+"currentLongestStreak"="Текущая самая длинная серия";
+"required"="Требуется";
+"completed"="Завершено";
+"unarchive"="Разархивировать";
+
+"unarchiveSunnahActionTitle"="Разархивировать сунну.";
+"unarchiveSunnahActionSubtitle"="Вы действительно хотите разархивировать эту сунну?";
+"successefullyUnarchived"="Успешно разархивировано.";
+"noUnarchivedEmptyTittle"="Нет архивированных сунн.";
+"noUnarchivedEmptySubtittle"="Нет никаких архивированных сунн. Как только вы архивируете сунну, она будет перемещена в этот раздел.";
+
+
+// DHIKRS
+"dhikr"="Зикр";
+"today"="Сегодня";
+"allTheTime"="Все время";
+"dhikrRating"="Рейтинг зикра";
+"rounds"="Раунды";
+"count"="Счет";
+"counterList"="Список счетчика";
+"item"="Элемент";
+"areYouSureToDelete"="Вы уверены, что хотите удалить";
+"thisItem"="этот элемент";
+"no"="Нет";
+"youMustHaveOneDhikr"="У вас должен быть хотя бы один зикр.";
+"dhikrRequirment"="Пожалуйста, убедитесь, что в тексте нет ошибок при добавлении нового зикра. Это важно — и полезно для вас самих!";
+"add"="Добавить";
+"weekly"="Еженедельно";
+"allTime"="Все время";
+"emailOrPhoneNumber"="Электронная почта или номер телефона";
+"addFriends"="Добавить друзей";
+
+
+// OTHERS
+"yourLocation"="Ваше местоположение";
+"detactAutomatically"="Определить автоматически";
+"location"="Местоположение";
+"prayerTimes"="Время намазов";
+"notification"="Уведомление";
+"theme"="Тема";
+"security"="Безопасность";
+"help"="Помощь";
+"logOut"="Выйти";
+"logOutDetail"="Вот текст предупреждения. При необходимости он может занимать несколько строк!";
+"yes"="Да";
+"profile"="Профиль";
+"myDevices"="Мои устройства";
+"yourDevices"="Ваше устройство";
+"eMail"="Электронная почта";
+"dateOfBirth"="Дата рождения";
+"save"="Сохранить";
+"userInfoSucUpdated"="Информация пользователя успешно обновлена!";
+"deleteAnAccount"="Удалить учетную запись";
+"deleteAnAccountDetail"="Вот текст предупреждения. При необходимости он может занимать несколько строк!";
+"profileEditing"="Редактирование профиля";
+"green"="Зеленый";
+"gray"="Серый";
+"create"="Создать";

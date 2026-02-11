@@ -1,0 +1,20 @@
+/* 
+  InfoPlist.strings
+  CorporativeBank
+
+  Created by Boburjon Khasanboev on 12/12/24.
+  
+*/
+
+// camera
+NSCameraUsageDescription = "Enable camera access to be able to scan a card or QR code or set a profile photo.";
+// notification
+NSUserNotificationUsageDescription = "Enable notification to be able to notified of news and other notifications.";
+// contacts
+NSContactsUsageDescription = "Enable the app read your contacts for fast transfers and payments";
+// face id
+NSFaceIDUsageDescription = "Enable Face ID for quick login";
+// locations
+NSLocationAlwaysUsageDescription = "Let the app use your location to find you the nearest branch and services";
+NSLocationAlwaysAndWhenInUseUsageDescription = "Let the app use your location to find you the nearest branch and services";
+NSLocationWhenInUseUsageDescription = "Let the app use your location to find you the nearest branch and services";

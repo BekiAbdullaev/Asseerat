@@ -1,0 +1,20 @@
+/* 
+  InfoPlist.strings
+  CorporativeBank
+
+  Created by Boburjon Khasanboev on 12/12/24.
+  
+*/
+
+// camera
+NSCameraUsageDescription = "Karta yoki QR kodni skanerlash yoki profil rasmini o‘rnatish uchun kameraga kirishni yoqing.";
+// notification
+NSUserNotificationUsageDescription = "Yangiliklar va boshqa bildirishnomalardan xabardor bo'lish uchun bildirishnomani yoqing.";
+// contacts
+NSContactsUsageDescription = "Ilovaga tezkor oʻtkazmalar va toʻlovlar uchun kontaktlaringizni oʻqishiga ruxsat bering";
+// face id
+NSFaceIDUsageDescription = "Tezkor kirish uchun Face ID ni yoqing.";
+// locations
+NSLocationAlwaysUsageDescription = "Ilovaga sizga eng yaqin filial va xizmatlarni topish uchun joylashuvingizdan foydalanishiga ruxsat bering";
+NSLocationAlwaysAndWhenInUseUsageDescription = "Ilovaga sizga eng yaqin filial va xizmatlarni topish uchun joylashuvingizdan foydalanishiga ruxsat bering";
+NSLocationWhenInUseUsageDescription = "Ilovaga sizga eng yaqin filial va xizmatlarni topish uchun joylashuvingizdan foydalanishiga ruxsat bering";

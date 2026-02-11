@@ -1,0 +1,315 @@
+/* 
+  Localizable.strings
+  CorporativeBank
+
+  Created by Abdullaev Bekzod on 14/11/23.
+  
+*/
+// MARK: - Login
+"lang"="Til";
+"skip"= "O'tkazib yuborish";
+"getStarted"= "Boshlash";
+"onboard1Title"="Asseeratga xush kelibsiz";
+"onboard2Title"="Asseerat AI";
+"onboard3Title"="Do'stlar bilan zikr";
+"onboard4Title"="Kundalik sunnat";
+"onboard5Title"="AR modellari";
+"onboard1Detail"="Payg'ambar Muhammad ﷺ hayotini boy hikoyalar, kundalik ilhom va ta'sirchan tajribalar orqali o'rganing.";
+"onboard2Detail"="Payg'ambarimiz ﷺ hayoti haqida har qanday savol bering va Asseerat AI yordamida tezkor, tushunarli javoblar oling.";
+"onboard3Detail"="Kundalik zikrda qatnashing va do'stlaringiz orasida qanday o'rinda turishingizni ko'ring.";
+"onboard4Detail"="Kundalik sunnat eslatmalari bilan yaxshi odatlar shakllantiring. Har kun uchun oddiy, kuchli amaliyotlar.";
+"onboard5Detail"="Sira tarixidagi muhim lahzalar va joylarni ajoyib 3D formatda kashf eting. Interaktiv AR tajribalari orqali tarixni jonlantiring.";
+
+"passwordValidationString"="Parol 8 ta belgidan iborat bo'lib, harflar, raqam va maxsus belgi bo'lishi kerak";
+"logIn"="Kirish";
+"loginDetail"="Payg'ambarimiz, unga tinchlik va salovat bo'lsin, hayotini o'rganish va savollaringizga ishonchli javoblar olish uchun kiring";
+"telephone"="Telefon";
+"password"="Parol";
+"login"="Kirish";
+"forgetPassword"="Parolni unutdingizmi?";
+"loginWith"="Orqali kirish";
+"dontHaveAccount"="Hisobingiz yo'qmi?";
+"signUp"="Ro'yxatdan o'tish";
+
+// SIGN UP
+"joinUs" = "Bizga qo'shiling";
+"joinUsDetail" = "Bu ma'lumot bizga sizga yanada dolzarb va qiziqarli kontent taqdim etishga yordam beradi";
+"name" = "Ism";
+"lastName"= "Familiya";
+"date"="Sana";
+"register"="Ro'yxatdan o'tish";
+"registerTerm"="Ro'yxatdan o'tish orqali siz quyidagi shartlarni qabul qilasiz";
+"privacyPolicy"="Maxfiylik siyosati";
+"areURegistered"="Ro'yxatdan o'tganmisiz?";
+"male" ="Erkak";
+"female" = "Ayol";
+
+"changePassword"="Parolni o'zgartirish";
+"enterPassDetail"="Tasdiqlash kodini olish uchun telefon raqamingizni kiriting";
+"verify"="Tasdiqlash";
+"enterOTPCode"="OTP kodini kiriting";
+"enterOTPCodeDetail"= "Tasdiqlash kodini olish uchun \(phone) telefon raqamingizga aktivlashtirish kodi yuborilgan SMS xabari yubordik";
+"confirm"="Tasdiqlash";
+"sentNew"="Yangisini yuborish";
+"confirmPassword"="Parolni tasdiqlang";
+"createPassword"="Parol yaratish";
+"resetPassword"="Parolni tiklash";
+"resetPasswordDetail"="Iltimos, eslab qoladigan narsani kiriting";
+"setPassword"="Parolni o'rnatish";
+"setPasswordDetail"="Siz +\(String(phone.dropFirst(3)).reformatAsPhone9()) telefon raqami bilan ro'yxatdan o'tyapsiz. Uning uchun maxsus parol o'rnating.";
+
+
+// HOME
+"home"="Bosh sahifa";
+"sunnahs"="Sunnatlar";
+"dhikrs"="Zikr";
+
+"home11Title"="Payg'ambar\nhayoti";
+"home11Subtitle"="Nur, rahmat va vahiyning\nabadiy sayohati";
+"home21Title"="Shamoil";
+"home21Subtitle"="Payg'ambarning go'zalligi va xarakterini o'rganish";
+"home22Title"="AR tajriba";
+"home22Subtitle"="Muqaddas narsalarni o'z makongizga olib keling";
+"home23Title"="Xaritalar va asosiy joylar";
+"home23Subtitle"="Payg'ambarning yurishlarini qayta boshdan kechiring";
+"home31Title"="Payg'ambarning\nsahobalari";
+"home31Subtitle"="Jasorat, muhabbat\nva iymon hikoyalari";
+"home41Title"="Payg'ambarning\noilasi";
+"home41Subtitle"="Uning oilasidan\nmuhabbat, kuch va\niymon hikoyalari";
+"home51Title"="Kundalik hayotda\nsunnat";
+"home51Subtitle"="Zamonaviy kundalik\nhayotda sunnatning\namaliy qo'llanilishi";
+"allowLocationAccess"="Joylashuv\nruxsatini berish";
+"dailySunnahAnalytics"="Kundalik sunnat tahlili";
+
+
+// HOME DETAIL
+"lifeListNavTitle"="Payg'ambar hayoti";
+"shamailListNavTitle"="Shamoil";
+"companionListNavTitle"="Payg'ambarning sahobalari";
+"familyListNavTitle"="Payg'ambarning oilasi";
+"sunnahListNavTitle"="Kundalik hayotda sunnat";
+
+"lifeList1Title"="Payg'ambarlikdan oldin";
+"lifeList1Subtitle"="Rostgo'ylik, ishonch va fikrlash hayoti";
+"lifeList2Title"="Makka davri";
+"lifeList2Subtitle"="Sabr va qat'iyat bilan tavhidga da'vat";
+"lifeList3Title"="Madina davri";
+"lifeList3Subtitle"="Adolatli va mehribon jamiyat barpo etish";
+"lifeList4Title"="Payg'ambardan keyin";
+"lifeList4Subtitle"="Uning merosi qalblarda va yo'l-yo'riqlarda yashaydi";
+
+"shamailList1Title"="Jismoniy tavsif";
+"shamailList1Subtitle"="Olijanob mavjudlik va yorqin qadr-qimmat";
+"shamailList2Title"="Tashqi ko'rinish";
+"shamailList2Subtitle"="Nafis poklik bilan soddalik";
+"shamailList3Title"="Ovqatlanish odatlari";
+"shamailList3Subtitle"="Shukr bilan mo''tadillik";
+"shamailList4Title"="Odob-axloq";
+"shamailList4Subtitle"="Nutq va xatti-harakatda yumshoqlik";
+"shamailList5Title"="Kundalik hayot";
+"shamailList5Subtitle"="Fidokorlik va muvozanat hayoti";
+"shamailList6Title"="Rahm-shafqat";
+"shamailList6Subtitle"="Barcha maxluqotga cheksiz rahm-shafqat";
+
+"companionList1Title"="Jannatga va'da qilingan o'nta";
+"companionList1Subtitle"="Iymon kashshoflari, abadiy mukofotga va'da qilinganlar";
+"companionList2Title"="To'rtta to'g'ri yo'lda yurgan xalifalar";
+"companionList2Subtitle"="Donishmandlik, adolat va payg'ambarlik merosining rahbarlari";
+"companionList3Title"="Sahobalar orasidagi olimlar";
+"companionList3Subtitle"="Bilim qo'riqchilari va haqiqat etkazuvchilari";
+"companionList4Title"="Xalifalar";
+"companionList4Subtitle"="Ummat mas'ullari va islom himoyachilari";
+"companionList5Title"="Ayollar";
+"companionList5Subtitle"="Kuch, taqvodorlik va qat'iy fidokorlik ayollari";
+"companionList6Title"="Yoshlar";
+"companionList6Subtitle"="Iymon bilan kuchaytirilgan yosh qalblar.";
+"companionList7Title"="Qahramonlar";
+"companionList7Subtitle"="Haqiqat va qurbonlikda mustahkam turgan jasur ruhlar";
+
+"familyList1Title"="Xotinlar";
+"familyList1Subtitle"="Mo'minlarning onalari, qo'llab-quvvatlash va donishmandlik ustunlari";
+"familyList2Title"="O'g'illar";
+"familyList2Subtitle"="Payg'ambar hayotidagi muhabbat va yo'qotishning qisqa nurlari";
+"familyList3Title"="Qizlar";
+"familyList3Subtitle"="Kuch va chuqur fidokorlik namunalari";
+"familyList4Title"="Ahli bayt";
+"familyList4Subtitle"="Qalb va vahiyda hurmat qilinadigan olijanob oila";
+
+"sunnahList1Title"="Nutq va odob-axloq sunnati";
+"sunnahList1Subtitle"="Har bir muloqotda nafis so'zlar va olijanob xulq";
+"sunnahList2Title"="Ovqatlanish va ichish sunnati";
+"sunnahList2Subtitle"="Shukr, mo''tadillik va ongli odatlar";
+"sunnahList3Title"="Ertalabki sunnat";
+"sunnahList3Subtitle"="Nur, zikr va maqsad bilan kunni boshlash";
+"sunnahList4Title"="Uyqu sunnati";
+"sunnahList4Subtitle"="Zikr va Ilohiyga ishonch bilan dam olish";
+"sunnahList5Title"="Sayohat sunnati";
+"sunnahList5Subtitle"="Namoz va odob bilan boshqariladigan ongli sayohatlar";
+"sunnahList6Title"="Haftalik sunnat";
+"sunnahList6Subtitle"="Ruhni yangilaydigan ibodat ritmlari";
+"sunnahList7Title"="Masjidda sunnat";
+"sunnahList7Subtitle"="Alloh uyida fidokorlik.";
+"sunnahList8Title"="Poklik sunnati";
+"sunnahList8Subtitle"="Imonga yo'l sifatida tana va ruh pokligi";
+"sunnahList9Title"="Kiyinish sunnati";
+"sunnahList9Subtitle"="Muvozanatda hayo, poklik va go'zallik";
+
+
+// AR EXPERIENCE
+"arEmtpyTitle"="AR tajriba tez orada!";
+"arEmtpySubtitle"="Biz ushbu funksiya ustida faol ishlamoqdamiz. Yangilanishlarni kuzatib boring.";
+"arNavTitle"="AR tajriba";
+"arList"="AR ro'yxati";
+"unknown"="Noma'lum";
+
+
+// MAPS AND KEY LOCATIONS
+"mapAndKeyLocEmityTitle"="Xaritalar va asosiy joylar tez orada!";
+"mapAndKeyLocEmitySubtitle"="Biz ushbu funksiya ustida faol ishlamoqdamiz. Yangilanishlarni kuzatib boring.";
+"mapAndKeyLocNavTitle"="Xaritalar va asosiy joylar";
+"mapAndKeyLocList"="Xaritalar va asosiy joylar ro'yxati";
+
+
+//AI ASISTANT
+"whatCanIDo"="Bugun siz uchun\nnima qila olaman?";
+"aiAssistant"="AI yordamchi";
+"sendMessage"="Xabar yuborish";
+"thinking"="O'ylayapman...";
+"aiTypes"="AI turlari";
+"noChatHistoryTitle"="Chat tarixi yo'q";
+"noChatHistorySubtitle"="Birinchi xabaringizni yuboring va tarixingiz saqlanib, bu yerda paydo bo'ladi.";
+"deleteChatActionTittle"="Chatni o'chirish.";
+"deleteChatActionSubtittle"="Haqiqatan ham bu chatni o'chirmoqchimisiz?";
+"chatHistory"="Chat tarixi";
+
+
+// SUNNAH
+"goal"="Maqsad";
+"type"="Turi";
+"freezed"="Muzlatilgan";
+"createSunnahEmpityTitle"="Kundalik sunnat yarating";
+"createSunnahEmpitySubtitle"="Kundalik o'rganish uchun yangi sunnat yozuvlarini osongina yarating.";
+"registerRequiredTitle"="Ro'yxatdan o'tish talab qilinadi";
+"registerRequiredSubtitle"="Ushbu funksiyadan foydalanish uchun ro'yxatdan o'tgan bo'lishingiz kerak.";
+"daily"="Kundalik";
+"weeklyGoals"="Haftalik maqsadlar";
+"monthlyGoals"="Oylik maqsadlar";
+"all"="Hammasi";
+
+"delete"="O'chirish";
+"deleteHabit"="Odatni o'chirish.";
+"deleteHabitDetail"="Haqiqatan ham bu odatni o'chirmoqchimisiz?";
+"back"="Orqaga";
+"complete"="Yakunlash";
+"unfreeze"="Muzlatishni bekor qilish";
+"freeze"="Muzlatish";
+
+"editSunnah"="Sunnatni tahrirlash";
+"editSunnahs"="Sunnatlarni tahrirlash";
+"noSunnahEmptyTitle"="Sunnatlar yo'q.";
+"noSunnahEmptySubtitle"="Tahrirlash uchun sunnatlar yo'q. Yangisini qo'shishingiz bilan u bu yerda paydo bo'ladi.";
+"archiveSunnahActionTitle"="Sunnatni arxivlash.";
+"archiveSunnahActionSubtitle"="Haqiqatan ham bu sunnatni arxivlamoqchimisiz?";
+"archive"="Arxiv";
+"successefullyArchived"="Muvaffaqiyatli arxivlandi.";
+"deleteSunnahActionTitle"="Sunnatni o'chirish.";
+"deleteSunnahActionSubtitle"="Haqiqatan ham bu sunnatni o'chirmoqchimisiz?";
+"successefullyDeleted"="Muvaffaqiyatli o'chirildi.";
+"done"="Tayyor";
+
+"addNewSunnah"="Yangi odat qo'shish";
+"standart"="Standart";
+"createCustomSunnah"="Maxsus odat yaratish";
+"addSunnah"="Sunnat qo'shish";
+"egMorningMeditator"="masalan, Ertalabki meditatsiya";
+"description"="Tavsif";
+"list"="Ro'yxat";
+"howOften"="Qancha tez-tez?";
+"remindMe"="Menga eslatib tur";
+"myDailyCount"="Mening kundalik hisobim";
+"successefullyEdited"="Muvaffaqiyatli tahrirlandi.";
+"successefullyAdded"="Muvaffaqiyatli qo'shildi.";
+"chooseIcon"="Ikonka tanlash";
+"period"="Davr";
+"repeat"="Takrorlash";
+"saveGoals"="Maqsadlarni saqlash";
+"selectTime"="Vaqtni tanlash";
+"saveTime"="Vaqtni saqlash";
+"setYourDailyReminder"="Kundalik eslatmani o'rnating";
+
+"drinkWater"="Suv ichish";
+"takeWalk"="Sayr qilish";
+"goToGYM"="Sport zaliga borish";
+"loseWeight"="Vazn yo'qotish";
+"planMyDay"="Kunimni rejalashtirish";
+"read"="O'qish";
+"medidate"="Meditatsiya qilish";
+"everyDay"="Har kuni";
+"everyWeek"="Har hafta";
+"everyDay"="Har oy";
+"selectWeekDays"="Hafta kunlarini tanlash";
+
+"analytics"="Tahlil";
+"overview"="Umumiy ko'rinish";
+"archived"="Arxivlangan";
+
+"completedInTotal"="Jami bajarilgan";
+"longestStreakEver"="Eng uzun ketma-ketlik";
+"currentLongestStreak"="Hozirgi eng uzun ketma-ketlik";
+"required"="Talab qilinadi";
+"completed"="Bajarildi";
+"unarchive"="Arxivdan chiqarish";
+
+"unarchiveSunnahActionTitle"="Sunnatni arxivdan chiqarish.";
+"unarchiveSunnahActionSubtitle"="Haqiqatan ham bu sunnatni arxivdan chiqarmoqchimisiz?";
+"successefullyUnarchived"="Muvaffaqiyatli arxivdan chiqarildi.";
+"noUnarchivedEmptyTittle"="Arxivlangan sunnatlar yo'q.";
+"noUnarchivedEmptySubtittle"="Hech qanday arxivlangan sunnatlar yo'q. Sunnatni arxivlashingiz bilanoq, u ushbu bo'limga ko'chiriladi.";
+
+
+// DHIKRS
+"dhikr"="Zikr";
+"today"="Bugun";
+"allTheTime"="Barcha vaqt";
+"dhikrRating"="Zikr reytingi";
+"rounds"="Raundlar";
+"count"="Hisob";
+"counterList"="Hisoblagich ro'yxati";
+"item"="Element";
+"areYouSureToDelete"="Ishonchingiz komilmi, o'chirmoqchimisiz";
+"thisItem"="bu elementni";
+"no"="Yo'q";
+"youMustHaveOneDhikr"="Sizda kamida bitta zikr bo'lishi kerak.";
+"dhikrRequirment"="Iltimos, yangi zikr qo'shishda matnda xatoliklar yo'qligiga ishonch hosil qiling. Bu muhim — va o'zingiz uchun foydali!";
+"add"="Qo'shish";
+"weekly"="Haftalik";
+"allTime"="Barcha vaqt";
+"emailOrPhoneNumber"="Elektron pochta yoki telefon raqami";
+"addFriends"="Do'stlar qo'shish";
+
+
+// OTHERS
+"yourLocation"="Sizning joylashuvingiz";
+"detactAutomatically"="Avtomatik aniqlash";
+"location"="Joylashuv";
+"prayerTimes"="Namoz vaqtlari";
+"notification"="Bildirishnoma";
+"theme"="Mavzu";
+"security"="Xavfsizlik";
+"help"="Yordam";
+"logOut"="Chiqish";
+"logOutDetail"="Mana ogohlantirish matni. Kerak bo'lsa, bir nechta qatorni egallashi mumkin!";
+"yes"="Ha";
+"profile"="Profil";
+"myDevices"="Mening qurilmalarim";
+"yourDevices"="Sizning qurilmangiz";
+"eMail"="Elektron pochta";
+"dateOfBirth"="Tug'ilgan sana";
+"save"="Saqlash";
+"userInfoSucUpdated"="Foydalanuvchi ma'lumotlari muvaffaqiyatli yangilandi!";
+"deleteAnAccount"="Hisobni o'chirish";
+"deleteAnAccountDetail"="Mana ogohlantirish matni. Kerak bo'lsa, bir nechta qatorni egallashi mumkin!";
+"profileEditing"="Profilni tahrirlash";
+"green"="Yashil";
+"gray"="Kulrang";
+"create"="Yaratish";

@@ -1,0 +1,316 @@
+//
+//  Localize.swift
+//  Asseerat
+//
+//  Created by Bekzod on 17/11/25.
+//
+
+
+// MARK: - Login
+"lang"="Language";
+"skip"= "Skip";
+"getStarted"= "Get Started";
+"onboard1Title"="Welcome to Asseerat";
+"onboard2Title"="Asseerat AI";
+"onboard3Title"="Dhikr with Friends";
+"onboard4Title"="Daily Sunnah";
+"onboard5Title"="AR Models";
+"onboard1Detail"="Explore the life of Prophet Muhammad ﷺ through rich stories, daily inspiration, and immersive experiences.";
+"onboard2Detail"="Ask any question about the life of the Prophet ﷺ and receive instant, insightful answers powered by Asseerat AI.";
+"onboard3Detail"="Engage in daily dhikr and see how you rank among your friends.";
+"onboard4Detail"="Build good habits with daily Sunnah reminders. Simple, powerful practices for every day.";
+"onboard5Detail"="Discover key moments and places from Seerah in stunning 3D. Bring history to life through interactive AR experiences.";
+
+"passwordValidationString"="Пароль от 8 символов с буквами, цифрой и спецсимволом";
+"logIn"="Log In";
+"loginDetail"="Log in to explore the life of our Prophet, peace be upon him, and receive trustworthy answers to your questions";
+"telephone"="Telephone";
+"password"="Password";
+"login"="Login";
+"forgetPassword"="Forget password?";
+"loginWith"="Login in with";
+"dontHaveAccount"="Don't have an account?";
+"signUp"="Sing Up";
+
+// SIGN UP
+"joinUs" = "Joining us";
+"joinUsDetail" = "This information helps us provide you with more relevant and engaging content";
+"name" = "Name";
+"lastName"= "Last name";
+"date"="Date";
+"register"="Register";
+"registerTerm"="By registering, you accept the terms of the";
+"privacyPolicy"="Privacy Policy";
+"areURegistered"="Are you registered?";
+"male" ="Male";
+"female" = "Female";
+
+"changePassword"="Change password";
+"enterPassDetail"="Please enter your phone number to receive a verification code";
+"verify"="Verify";
+"enterOTPCode"="Enter OTP code";
+"enterOTPCodeDetail"= "We’ve sent an SMS with an activation code to your phone \(phone) number to receive a verification code";
+"confirm"="Confirm";
+"sentNew"="Sent New";
+"confirmPassword"="Confirm password";
+"createPassword"="Create password";
+"resetPassword"="Reset password";
+"resetPasswordDetail"="Please type something you’ll remember";
+"setPassword"="Set password";
+"setPasswordDetail"="You are registering with +\(String(phone.dropFirst(3)).reformatAsPhone9()) phone number. Set specific password for it.";
+
+
+// HOME
+"home"="Home";
+"sunnahs"="Sunnahs";
+"dhikrs"="Dhikr";
+
+"home11Title"="Life of the\nProphet";
+"home11Subtitle"="A Timeless Journey of Light,\nMercy, and Revelation";
+"home21Title"="Shama’il";
+"home21Subtitle"="Exploring the Beauty and Character of the Prophet";
+"home22Title"="AR Experience";
+"home22Subtitle"="Bring Sacred Artifacts to Your Space";
+"home23Title"="Maps & Key Locations";
+"home23Subtitle"="Relive the Prophet’s Campaigns";
+"home31Title"="Companins of\nthe Prophet";
+"home31Subtitle"="Stories of Courage,\nLove, and Faith";
+"home41Title"="Family of the\nProphet";
+"home41Subtitle"="Stories of Love,\nStrength, and Faith\nfrom His Family";
+"home51Title"="Sunnah in\nDaily Life";
+"home51Subtitle"="Practical applications\nof the Sunnah in modern\ndaily life";
+"allowLocationAccess"="Allow location\naccess";
+"dailySunnahAnalytics"="Daily sunnah analytics";
+
+
+// HOME DETAIL
+"lifeListNavTitle"="Life of the Prophet";
+"shamailListNavTitle"="Shama’il";
+"companionListNavTitle"="Companions of the Prophet";
+"familyListNavTitle"="Family of the Prophet";
+"sunnahListNavTitle"="Sunnah in Daily Life";
+
+"lifeList1Title"="Before Prophethood";
+"lifeList1Subtitle"="A life of truthfulness, trust, and reflection";
+"lifeList2Title"="Meccan Period";
+"lifeList2Subtitle"="Calling to monotheism with patience and perseverance";
+"lifeList3Title"="Medinan Period";
+"lifeList3Subtitle"="Establishing a just and compassionate community";
+"lifeList4Title"="After the Prophet";
+"lifeList4Subtitle"="His legacy lives on in hearts and guidance";
+
+"shamailList1Title"="Physical Description";
+"shamailList1Subtitle"="Noble presence and radiant dignity";
+"shamailList2Title"="Appearance";
+"shamailList2Subtitle"="Simplicity with graceful cleanliness";
+"shamailList3Title"="Eating Habits";
+"shamailList3Subtitle"="Moderation with gratitude";
+"shamailList4Title"="Manners";
+"shamailList4Subtitle"="Gentleness in speech and conduct";
+"shamailList5Title"="Daily Life";
+"shamailList5Subtitle"="A life of devotion and balance";
+"shamailList6Title"="Compassion";
+"shamailList6Subtitle"="Boundless mercy to all creation";
+
+"companionList1Title"="The Ten Promised Paradise";
+"companionList1Subtitle"="Pioneers of faith, promised eternal reward";
+"companionList2Title"="The Four Rightly Guided";
+"companionList2Subtitle"="Leaders of wisdom, justice, and prophetic legacy";
+"companionList3Title"="Scholars among Sahaba";
+"companionList3Subtitle"="Guardians of knowledge and transmitters of truth";
+"companionList4Title"="Caliphs";
+"companionList4Subtitle"="Stewards of the Ummah and defenders of Islam";
+"companionList5Title"="Female";
+"companionList5Subtitle"="Women of strength, piety, and unwavering devotion";
+"companionList6Title"="Young";
+"companionList6Subtitle"="Youthful hearts empowered by faith.";
+"companionList7Title"="Heroes";
+"companionList7Subtitle"="Brave souls who stood firm in truth and sacrifice";
+
+"familyList1Title"="Wives";
+"familyList1Subtitle"="Mothers of the Believers, pillars of support and wisdom";
+"familyList2Title"="Sons";
+"familyList2Subtitle"="Brief lights of love and loss in the Prophet’s life";
+"familyList3Title"="Daughters";
+"familyList3Subtitle"="Models of strength and deep devotion";
+"familyList4Title"="Ahlul Bayt";
+"familyList4Subtitle"="The noble family, honored in heart and revelation";
+
+"sunnahList1Title"="Sunnah of Speech & Manners";
+"sunnahList1Subtitle"="Graceful words and noble conduct in every interaction";
+"sunnahList2Title"="Sunnah of Eating & Drinking";
+"sunnahList2Subtitle"="Gratitude, moderation, and mindful habits";
+"sunnahList3Title"="Morning Sunnah";
+"sunnahList3Subtitle"="Beginning the day with light, remembrance, and purpose";
+"sunnahList4Title"="Sunnah of Sleep";
+"sunnahList4Subtitle"="Rest with remembrance and trust in the Divine";
+"sunnahList5Title"="Sunnah of Travel";
+"sunnahList5Subtitle"="Mindful journeys guided by prayer and etiquette";
+"sunnahList6Title"="Weekly Sunnah";
+"sunnahList6Subtitle"="Rhythms of worship that renew the spirit";
+"sunnahList7Title"="Sunnah in the Masjid";
+"sunnahList7Subtitle"="Devotion in the house of Allah.";
+"sunnahList8Title"="Sunnah of Cleanliness";
+"sunnahList8Subtitle"="Purity of body and soul as a path to faith";
+"sunnahList9Title"="Sunnah of Dressing";
+"sunnahList9Subtitle"="Modesty, cleanliness, and beauty in balance";
+
+
+// AR EXPERIENCE
+"arEmtpyTitle"="AR Experience Soon!";
+"arEmtpySubtitle"="We are actively building this feature. Stay tuned for updates.";
+"arNavTitle"="AR Experience";
+"arList"="AR List";
+"unknown"="Unknown";
+
+
+// MAPS AND KEY LOCATIONS
+"mapAndKeyLocEmityTitle"="Maps & Key Locations Soon!";
+"mapAndKeyLocEmitySubtitle"="We are actively building this feature. Stay tuned for updates.";
+"mapAndKeyLocNavTitle"="Maps & Key Locations";
+"mapAndKeyLocList"="Maps & Key Locations List";
+
+
+//AI ASISTANT
+"whatCanIDo"="What Can I Do for\nYou Today?";
+"aiAssistant"="AI Assistant";
+"sendMessage"="Send message";
+"thinking"="Thinking...";
+"aiTypes"="AI types";
+"noChatHistoryTitle"="No chat history";
+"noChatHistorySubtitle"="Send your first message, and your history will be saved and appear here.";
+"deleteChatActionTittle"="Delete chat.";
+"deleteChatActionSubtittle"="Do you really want to delete this chat?";
+"chatHistory"="Chat history";
+
+
+// SUNNAH
+"goal"="Goal";
+"type"="Type";
+"freezed"="Freezed";
+"createSunnahEmpityTitle"="Create a sunnah daily";
+"createSunnahEmpitySubtitle"="Easily create new Sunnah entries for daily learning.";
+"registerRequiredTitle"="Registration Required";
+"registerRequiredSubtitle"="In order to use this feature, you must be registered.";
+"daily"="Daily";
+"weeklyGoals"="Weekly goals";
+"monthlyGoals"="Monthly goals";
+"all"="All";
+
+"delete"="Delete";
+"deleteHabit"="Delete habit.";
+"deleteHabitDetail"="Do you really want to delete this habit?";
+"back"="Back";
+"complete"="Complete";
+"unfreeze"="Unfreeze";
+"freeze"="Freeze";
+
+"editSunnah"="Edit Sunnah";
+"editSunnahs"="Edit Sunnahs";
+"noSunnahEmptyTitle"="No sunnahs.";
+"noSunnahEmptySubtitle"="There are no any sunnahs to edit. As soon as adding a new one, it will appear here.";
+"archiveSunnahActionTitle"="Archive sunnah.";
+"archiveSunnahActionSubtitle"="Do you really want to archive this sunnah?";
+"archive"="Archive";
+"successefullyArchived"="Successefully archived.";
+"deleteSunnahActionTitle"="Delete sunnah.";
+"deleteSunnahActionSubtitle"="Do you really want to delete this sunnah?";
+"successefullyDeleted"="Successefully deleted.";
+"done"="Done";
+
+"addNewSunnah"="Add new habit";
+"standart"="Standart";
+"createCustomSunnah"="Create custom habit";
+"addSunnah"="Add Sunnah";
+"egMorningMeditator"="e.g. Morning Meditation";
+"description"="Description";
+"list"="List";
+"howOften"="How often?";
+"remindMe"="Remind me";
+"myDailyCount"="My daily count";
+"successefullyEdited"="Successefully edited.";
+"successefullyAdded"="Successefully added.";
+"chooseIcon"="Choose icon";
+"period"="Period";
+"repeat"="Repeat";
+"saveGoals"="Save goals";
+"selectTime"="Select Time";
+"saveTime"="Save Time";
+"setYourDailyReminder"="Set your daily reminder";
+
+"drinkWater"="Drink Water";
+"takeWalk"="Take a walk";
+"goToGYM"="Go to the gym";
+"loseWeight"="Lose weight";
+"planMyDay"="Plan my day";
+"read"="Read";
+"medidate"="Medidate";
+"everyDay"="Every day";
+"everyWeek"="Every week";
+"everyDay"="Every month";
+"selectWeekDays"="Select weakdays";
+
+"analytics"="Analytics";
+"overview"="Overview";
+"archived"="Archived";
+
+"completedInTotal"="Completed in total";
+"longestStreakEver"="Longest streak ever";
+"currentLongestStreak"="Current longest streak";
+"required"="Required";
+"completed"="Completed";
+"unarchive"="Unarchive";
+
+"unarchiveSunnahActionTitle"="Unarchive sunnah.";
+"unarchiveSunnahActionSubtitle"="Do you really want to unarchive this sunnah?";
+"successefullyUnarchived"="Successefully unarchived.";
+"noUnarchivedEmptyTittle"="No archived sunnahs.";
+"noUnarchivedEmptySubtittle"="There are no any archived sunnahs. As soon as you archive a sunnah, it will be moved to this section.";
+
+
+// DHIKRS
+"dhikr"="Dhikr";
+"today"="Today";
+"allTheTime"="All the time";
+"dhikrRating"="Dhikr rating";
+"rounds"="Rounds";
+"count"="Count";
+"counterList"="Counter list";
+"item"="Item";
+"areYouSureToDelete"="Are you shure, you want to delete";
+"thisItem"="this item";
+"no"="No";
+"youMustHaveOneDhikr"="You must have at least one dhikr.";
+"dhikrRequirment"="Please make sure there are no mistakes in the text when adding new dhikr. It's important — and beneficial for yourself!";
+"add"="Add";
+"weekly"="Weekly";
+"allTime"="All time";
+"emailOrPhoneNumber"="Email or Phone number";
+"addFriends"="Add friends";
+
+
+// OTHERS
+"yourLocation"="Your location";
+"detactAutomatically"="Detact automatically";
+"location"="Location";
+"prayerTimes"="Prayer times";
+"notification"="Notification";
+"theme"="Theme";
+"security"="Security";
+"help"="Help";
+"logOut"="Log Out";
+"logOutDetail"="Here’s some alert text. It can span multiple lines if needed!";
+"yes"="Yes";
+"profile"="Profile";
+"myDevices"="My devices";
+"yourDevices"="Your device";
+"eMail"="E-mail";
+"dateOfBirth"="Date of birth";
+"save"="Save";
+"userInfoSucUpdated"="User info successfully updated!";
+"deleteAnAccount"="Delete an account";
+"deleteAnAccountDetail"="Here’s some alert text. It can span multiple lines if needed!";
+"profileEditing"="Profile Editing";
+"green"="Green";
+"gray"="Gray";
+"create"="Create";
