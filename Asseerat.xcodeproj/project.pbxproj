@@ -91,6 +91,8 @@
 		AE6D1EFD2E92478F008F6D56 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6D1EFC2E92478F008F6D56 /* Notification.swift */; };
 		AE6D1EFF2E925C18008F6D56 /* EditHabitActionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6D1EFE2E925C18008F6D56 /* EditHabitActionsView.swift */; };
 		AE6D1F022E927999008F6D56 /* SunnahAnalyticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6D1F012E927999008F6D56 /* SunnahAnalyticsViewModel.swift */; };
+		AE6FF75D2F418F0700E4E742 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6FF75C2F418F0700E4E742 /* ImagePicker.swift */; };
+		AE6FF8C72F41DE4600E4E742 /* default.wav in Resources */ = {isa = PBXBuildFile; fileRef = AE6FF8C62F41DE4600E4E742 /* default.wav */; };
 		AE7150632DFECC3500249038 /* Inter-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AE7150602DFECC3500249038 /* Inter-Regular.ttf */; };
 		AE7150642DFECC3500249038 /* Inter-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AE71505E2DFECC3500249038 /* Inter-Bold.ttf */; };
 		AE7150652DFECC3500249038 /* Inter-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AE7150612DFECC3500249038 /* Inter-SemiBold.ttf */; };
@@ -350,6 +352,8 @@
 		AE6D1EFC2E92478F008F6D56 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		AE6D1EFE2E925C18008F6D56 /* EditHabitActionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditHabitActionsView.swift; sourceTree = "<group>"; };
 		AE6D1F012E927999008F6D56 /* SunnahAnalyticsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunnahAnalyticsViewModel.swift; sourceTree = "<group>"; };
+		AE6FF75C2F418F0700E4E742 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		AE6FF8C62F41DE4600E4E742 /* default.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = default.wav; sourceTree = "<group>"; };
 		AE71505E2DFECC3500249038 /* Inter-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Bold.ttf"; sourceTree = "<group>"; };
 		AE71505F2DFECC3500249038 /* Inter-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Medium.ttf"; sourceTree = "<group>"; };
 		AE7150602DFECC3500249038 /* Inter-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Regular.ttf"; sourceTree = "<group>"; };
@@ -781,6 +785,7 @@
 		AE13523F2E8665FA002D19E0 /* Audio */ = {
 			isa = PBXGroup;
 			children = (
+				AE6FF8C62F41DE4600E4E742 /* default.wav */,
 				AE1352422E8666A1002D19E0 /* audio_complete.wav */,
 			);
 			path = Audio;
@@ -1516,6 +1521,7 @@
 			isa = PBXGroup;
 			children = (
 				AEAF2D2C2E0722660099B7D0 /* ProfileEditVIew.swift */,
+				AE6FF75C2F418F0700E4E742 /* ImagePicker.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2345,6 +2351,7 @@
 				AEC36F742DF94001006B033C /* Preview Assets.xcassets in Resources */,
 				AE1A595F2ED223130042CE51 /* GoogleService-Info.plist in Resources */,
 				AEC36F752DF94001006B033C /* Assets.xcassets in Resources */,
+				AE6FF8C72F41DE4600E4E742 /* default.wav in Resources */,
 				AEF544F82E2825D2008956E1 /* Launch Screen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2395,6 +2402,7 @@
 				AEAF2D4A2E0977200099B7D0 /* SearchView.swift in Sources */,
 				AE83A77B2E2266BF004781A9 /* EditHabitView.swift in Sources */,
 				AEC370402DF99230006B033C /* NVActivityIndicatorAnimationBallClipRotate.swift in Sources */,
+				AE6FF75D2F418F0700E4E742 /* ImagePicker.swift in Sources */,
 				AEC370412DF99230006B033C /* NVActivityIndicatorAnimationBallZigZag.swift in Sources */,
 				AEC370422DF99230006B033C /* NVActivityIndicatorAnimationLineScalePulseOutRapid.swift in Sources */,
 				AEC370432DF99230006B033C /* NVActivityIndicatorAnimationDelegate.swift in Sources */,
@@ -2734,7 +2742,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Asseerat/Asseerat.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_ASSET_PATHS = "\"Asseerat/Preview Content\"";
 				DEVELOPMENT_TEAM = WR6Q5NF99N;
 				ENABLE_PREVIEWS = YES;
@@ -2776,7 +2784,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Asseerat/Asseerat.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_ASSET_PATHS = "\"Asseerat/Preview Content\"";
 				DEVELOPMENT_TEAM = WR6Q5NF99N;
 				ENABLE_PREVIEWS = YES;

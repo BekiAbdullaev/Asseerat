@@ -314,3 +314,10 @@
 "green"="Green";
 "gray"="Gray";
 "create"="Create";
+
+"cancel"="Cancel";
+"galery"="Galery";
+"camera"="Camera";
+"uploadImage"="Upload image";
+"settings"="Settings";
+"cameraRequired"="You need to set permission to use camera.";

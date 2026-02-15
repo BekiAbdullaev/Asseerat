@@ -64,7 +64,6 @@ final class LocationManager: NSObject, ObservableObject, CLLocationManagerDelega
     // MARK: - DELEGATES
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         let status = manager.authorizationStatus
-        print("Authorization changed:", status.rawValue)
 
         switch status {
         case .authorizedWhenInUse, .authorizedAlways:

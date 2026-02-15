@@ -324,4 +324,13 @@ struct Localize {
     static var create: String { "create".localized }// "Create"
     static var lang: String { "lang".localized }
     
+    static var cancel: String { "cancel".localized }
+    static var galery: String { "galery".localized }
+    static var camera: String { "camera".localized }
+    static var uploadImage: String { "uploadImage".localized }
+    static var settings: String { "settings".localized }
+    static var cameraRequired: String { "cameraRequired".localized }
+    
+    
+    
 }

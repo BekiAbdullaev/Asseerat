@@ -32,41 +32,70 @@ class SunnahsViewModel: ObservableObject {
     @Published var progressPercent = "0"
     var recuiredCount = 0
     var currentCount = 0
+    var currentType = ""
+    var currentSunnahs: [SunnahModel.GetClientHabitsRows] = []
     let columns = [ GridItem(.flexible())]
     
     func setInitProgress() {
-        if let dayHabits = inithabitList?.filter({$0.frequency_type == "D"}){
+        if let dayHabits = inithabitList?.filter({$0.frequency_type == "D" && $0.status != 2}){
             recuiredCount = 0
             currentCount = 0
+            currentType = "D"
+            currentSunnahs = dayHabits
             for habit in dayHabits {
                 recuiredCount += habit.required_count ?? 0
                 currentCount += habit.current_count ?? 0
             }
-            self.changeInitProgress(curCount: currentCount, reqCount: recuiredCount)
+            self.changeInitProgress(curCount: currentCount, reqCount: recuiredCount, frequencyType: currentType)
 
-        } else if let dayHabits = inithabitList?.filter({$0.frequency_type == "W"}){
+        } else if let weakHabits = inithabitList?.filter({$0.frequency_type == "W" && $0.status != 2}){
             recuiredCount = 0
             currentCount = 0
-            for habit in dayHabits {
+            currentType = "W"
+            currentSunnahs = weakHabits
+            for habit in weakHabits {
                 recuiredCount += habit.required_count ?? 0
                 currentCount += habit.current_count ?? 0
             }
-            self.changeInitProgress(curCount: currentCount, reqCount: recuiredCount)
-        } else if let dayHabits = inithabitList?.filter({$0.frequency_type == "M"}) {
+            self.changeInitProgress(curCount: currentCount, reqCount: recuiredCount, frequencyType: currentType)
+        } else if let monthHabits = inithabitList?.filter({$0.frequency_type == "M" && $0.status != 2}) {
             recuiredCount = 0
             currentCount = 0
-            for habit in dayHabits {
+            currentType = "M"
+            currentSunnahs = monthHabits
+            for habit in monthHabits {
                 recuiredCount += habit.required_count ?? 0
                 currentCount += habit.current_count ?? 0
             }
-            self.changeInitProgress(curCount: currentCount, reqCount: recuiredCount)
+            self.changeInitProgress(curCount: currentCount, reqCount: recuiredCount, frequencyType: currentType)
         }
     }
     
-    func changeInitProgress(curCount:Int, reqCount:Int) {
-        if reqCount != 0 {
+    func changeInitProgress(curCount:Int, reqCount:Int, frequencyType:String) {
+        if (reqCount != 0 && currentType == frequencyType) {
             let percent = "\(Int((Double(curCount)/Double(reqCount)) * 100))"
             let count = Double((Double(curCount)/Double(reqCount)))
+            self.progressPercent = percent
+            withAnimation(.easeInOut(duration: 0.4)) {
+                self.progressCount = count
+            }
+        }
+    }
+    
+    func changeProgress(curCount:Int, frequencyType:String, id:Int) {
+        
+        if currentType == frequencyType {
+            var reqCount = recuiredCount
+            var currentCount = curCount
+            
+            for sunnah in currentSunnahs {
+                if sunnah.id != id {
+                    currentCount += sunnah.current_count ?? 0
+                }
+            }
+            
+            let percent = "\(Int((Double(currentCount)/Double(reqCount)) * 100))"
+            let count = Double((Double(currentCount)/Double(reqCount)))
             self.progressPercent = percent
             withAnimation(.easeInOut(duration: 0.4)) {
                 self.progressCount = count
@@ -92,6 +121,7 @@ class SunnahsViewModel: ObservableObject {
                 return order1 < order2
             }
             .map { $0.habits }
+        
         return sortedGroups
     }
     
@@ -103,10 +133,19 @@ class SunnahsViewModel: ObservableObject {
         }
     }
     
+    func updateHabit(sunnah:SunnahModel.GetClientHabitsRows, onComplete:@escaping(([[SunnahModel.GetClientHabitsRows]])->Void)) {
+        for section in 0..<self.habitList.count {
+            if let row = self.habitList[section].firstIndex(where: { $0.id == sunnah.id }) {
+                self.habitList[section][row] = sunnah
+                onComplete(self.habitList)
+            }
+        }
+    }
+    
 
     func getSunnahTypes() {
         let userID = SecurityBean.shared.userId
-        NetworkManager(hudType: .authorized).request(SunnahAPI.getSunnahTypes(userId: userID)) { (response:SunnahModel.Response.SunnahTypeResponse) in
+        NetworkManager(hudType: .noHud).request(SunnahAPI.getSunnahTypes(userId: userID)) { (response:SunnahModel.Response.SunnahTypeResponse) in
             if let rows = response.rows, !rows.isEmpty {
                 for item in rows {
                     self.sunnahList.append(item)
@@ -119,11 +158,12 @@ class SunnahsViewModel: ObservableObject {
     
     func getClientHabits(onComplete:@escaping(([[SunnahModel.GetClientHabitsRows]])->())) {
         let userID = SecurityBean.shared.userId
-        NetworkManager(hudType: .authorized).request(SunnahAPI.getClentHabits(userId: userID)) { (response:SunnahModel.Response.GetClientHabitsResponse) in
+        NetworkManager(hudType: .noHud).request(SunnahAPI.getClentHabits(userId: userID)) { (response:SunnahModel.Response.GetClientHabitsResponse) in
+            
             self.inithabitList = response.rows ?? []
-            let groupedHabits = self.groupHabitsByFrequency(response.rows ?? [])
-            self.habitList = groupedHabits
-            onComplete(groupedHabits)
+            self.setInitProgress()
+            self.habitList = self.groupHabitsByFrequency(response.rows ?? [])
+            onComplete(self.habitList)
         } failure: { error in
             showTopAlert(title: error?.reason ?? "Something wrong...")
         }

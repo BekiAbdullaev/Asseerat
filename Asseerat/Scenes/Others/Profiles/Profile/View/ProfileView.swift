@@ -45,7 +45,7 @@ struct ProfileView: View {
     private func bodyView() -> some View {
         VStack(spacing:10){
             ScrollView(.vertical, showsIndicators: false){
-                ProfileUserView(title: userName, subtitle: login, profileImage: "ic_profile") {
+                ProfileUserView(title: userName, subtitle: login,) {
                     self.coordinator.navigate(type: .other(.editProfile))
                 }
                 ProfileItemView(icon: "ic_ball", title: Localize.notification, hasSwich: true, togleState: $notificationState)

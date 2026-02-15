@@ -12,5 +12,4 @@ enum SunnahDetailBackType {
     case edit
 }
 
-class SunnahDetailViewModel: ObservableObject {
-}
+

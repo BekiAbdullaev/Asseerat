@@ -33,18 +33,43 @@ struct SunnahsItemView: View {
             }
             
             Spacer()
+            
             if item.status == 2 {
-                TextFactory.text(type: .regular(text: Localize.freezed, font: .reg12))
+                TextFactory.text(type: .regular(text: Localize.freezed, font: .reg14))
                     .padding(.trailing, 16)
             } else {
-                Image(item.status == 3 ? "ic_circle_check" : "ic_circle_uncheck")
-                    .resizable()
-                    .frame(width: 28, height: 28).padding(.trailing, 16)
+                withAnimation(.easeInOut(duration: 0.4)) {
+                    self.progres()
+                }
             }
-        }.frame(height: 64)
+        }.frame(height: 80)
         .background(
             RoundedRectangle(cornerRadius: 16)
                 .fill(Colors.green)
         ).padding(.horizontal,16)
     }
+    
+    
+    @ViewBuilder
+    private func progres() -> some View {
+        ZStack {
+            Circle()
+                .stroke(Colors.background, style: StrokeStyle(lineWidth: 4, lineCap: .round))
+                .frame(width: 40, height: 40)
+            Circle()
+                .trim(from: 0, to:CGFloat(self.item.current_count ?? 0) / CGFloat(self.item.required_count ?? 0))
+                .stroke(Colors.btnColor, style: StrokeStyle(lineWidth: 4, lineCap: .round))
+                .frame(width: 40, height: 40)
+                .rotationEffect(.degrees(-90))
+            
+            if item.required_count != item.current_count {
+                TextFactory.text(type: .semibold(text: "\(String(item.current_count ?? 0))", font: .reg14, color: .white))
+                    .frame(width: 40, height: 40)
+                   
+            } else {
+                CheckMarkerWithSound(size: 15, line: 4, needSound: false)
+            }
+        }.padding(.trailing,16)
+    }
+
 }

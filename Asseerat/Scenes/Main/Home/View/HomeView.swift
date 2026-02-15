@@ -22,6 +22,7 @@ struct HomeView: View {
     @State private var needSaveMemory = true
     @State private var isLocationAllowed = true
     @State private var currentLocation = [Double]()
+    @State private var imagedata:[Data]?
         
     init(viewModel:HomeViewModel, vmPrayerTime:PrayerTimeViewModel) {
         self.viewModel = viewModel
@@ -64,6 +65,7 @@ struct HomeView: View {
             .navigationBarHidden(true)
             .onTapGesture { keyboardEndEditing() }
             .onDidLoad {
+                self.imagedata = UDManager.shared.getObject(key: .profileImage)
                 locationManager.getLocation { location in
                     let long:Double = Double(location.longitude)
                     let lati:Double = Double(location.latitude)
@@ -71,6 +73,7 @@ struct HomeView: View {
                     self.getNamazTimes(long: long, lati: lati)
                 }
                 self.onNotificationParmissionChange()
+                self.setNotification()
             }
     }
     
@@ -186,9 +189,32 @@ struct HomeView: View {
                 Spacer()
                 ButtonFactory.button(type: .roundedWhite(image: "ic_globus", onClick: pushToLanguage))
                 ButtonFactory.button(type: .roundedWhite(image: "ic_ball", onClick: pushToNotification))
-                ButtonFactory.button(type: .roundedWhite(image: "ic_profile", needFull: true, onClick: pushToProfile)).padding(.trailing, 16)
+                profileView()
             }
         }.frame(height: 42).frame(maxWidth:.infinity).padding(.top,8)
+    }
+    
+    @ViewBuilder
+    private func profileView() -> some View {
+        if let imageIn = imagedata?.first, let image = UIImage(data: imageIn)  {
+            Image(uiImage: image)
+                .resizable()
+                .scaledToFill()
+                .frame(width: 42, height: 42)
+                .cornerRadius(42, corners: .allCorners).padding(.trailing, 16)
+                .onTapGesture(perform: pushToProfile)
+        } else {
+            ZStack{
+                Image("ic_profile")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 30 , height:30)
+            }.frame(width: 42, height: 42, alignment: .center)
+                .background(
+                    RoundedRectangle(cornerRadius: 21, style: .continuous).fill(Colors.green)
+                ).padding(.trailing, 16)
+                .onTapGesture(perform: pushToProfile)
+        }
     }
     
     private func pushToLanguage() {
@@ -219,6 +245,12 @@ struct HomeView: View {
         guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
         if UIApplication.shared.canOpenURL(url) {
             UIApplication.shared.open(url)
+        }
+    }
+    
+    func setNotification() {
+        NotificationCenter.default.addObserver(forName: .updateProfileImage, object: nil, queue: .main) { _ in
+            self.imagedata = UDManager.shared.getObject(key: .profileImage)
         }
     }
 }

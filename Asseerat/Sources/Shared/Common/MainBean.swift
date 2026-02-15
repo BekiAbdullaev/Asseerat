@@ -13,6 +13,7 @@ class MainBean: NSObject {
     // MARK: - Shared instance of Global
     static let shared = MainBean()
     lazy var userInfo:UserInfo? = nil
+    public var userID: String?
     
     
     func changeToBindingBool(bool:Bool)-> Binding<Bool> {

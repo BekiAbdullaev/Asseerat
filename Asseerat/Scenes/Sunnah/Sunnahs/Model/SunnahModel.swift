@@ -73,7 +73,7 @@ enum SunnahModel {
         let alert_time:String?
         let icon_name:String?
         let type_id:Int?
-        let current_count:Int?
+        var current_count:Int?
         init(id: Int?, type: SunnahTypeRows?, state: String?, name: String?, status: Int?, created_at: String?, updated_at: String?, order_id: Int?, description_uz: String?, frequency_type: String?, client_id: String?, frequency_value: [Int]?, required_count: Int?, alert_state: String?, alert_time: String?, icon_name: String?, type_id: Int?, current_count: Int?) {
             self.id = id
             self.type = type

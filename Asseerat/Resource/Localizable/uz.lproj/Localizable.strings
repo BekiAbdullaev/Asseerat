@@ -313,3 +313,10 @@
 "green"="Yashil";
 "gray"="Kulrang";
 "create"="Yaratish";
+
+"cancel"="Bekor qilish";
+"galery"="Galereya";
+"camera"="Kamera";
+"uploadImage"="Rasmni yuklash";
+"settings"="Sozlamalar";
+"cameraRequired"="Kameradan foydalanish uchun ruxsatni o'rnatishingiz kerak.";

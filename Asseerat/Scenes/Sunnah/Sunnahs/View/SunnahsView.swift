@@ -57,7 +57,7 @@ struct SunnahsView: View {
             .onDidLoad {
                 if MainBean.shared.userSignedIn() {
                     self.viewModel.getSunnahTypes()
-                    self.getClientHabits()
+                    self.getClientSunnahs()
                     self.setNotification()
                 }
             }
@@ -71,12 +71,10 @@ struct SunnahsView: View {
             }
     }
     
-    private func getClientHabits() {
+    private func getClientSunnahs() {
         self.viewModel.getClientHabits { habits in
-            if !habits.isEmpty {
-                self.habitLists = habits
-                self.viewModel.setInitProgress()
-            }
+            self.habitLists = habits
+            self.viewModel.setInitProgress()
         }
     }
     
@@ -97,12 +95,13 @@ struct SunnahsView: View {
     private func openSunnahDetail() -> some View {
         if let selectedHabit = self.selectedHabit {
             SunnahDetailView(item: selectedHabit, vm: self.viewModel) { type in
+                
                 if type == .edit {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
                         self.coordinator.navigate(type: .sunnah(.editHabit(item: selectedHabit, types: self.viewModel.sunnahList)))
                     }
                 } else if type == .update {
-                    self.getClientHabits()
+                    self.getClientSunnahs()
                 }
             }
         }
@@ -256,11 +255,16 @@ extension SunnahsView {
 
 extension SunnahsView {
     func setNotification() {
-        NotificationCenter.default.addObserver(
-            forName: .updateHabitList,
-            object: nil,
-            queue: .main) { _ in
-                self.getClientHabits()
+        NotificationCenter.default.addObserver(forName: .updateHabitList, object: nil, queue: .main) { _ in
+            self.getClientSunnahs()
+        }
+        
+        NotificationCenter.default.addObserver(forName: .updateSunnahItem, object: nil, queue: .main) { notification in
+            guard let sunnah = notification.userInfo?["sunnah"] as? SunnahModel.GetClientHabitsRows else { return }
+            
+            self.viewModel.updateHabit(sunnah: sunnah) { sunnahs in
+                self.habitLists = sunnahs
             }
+        }
     }
 }

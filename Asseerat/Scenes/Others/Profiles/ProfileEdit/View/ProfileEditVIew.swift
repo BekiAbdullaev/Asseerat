@@ -24,9 +24,16 @@ struct ProfileEditVIew: View {
     @State private var selectedSegment = 0
     @State private var regByPhone:Bool = false
     @State private var selectedImage: UIImage? = nil
-    @State private var isImagePickerPresented: Bool = false
+    @State private var showAlert: Bool = false
+    @State private var showingOptions = false
+    @State var isShowPicker: Bool = false
+    @State private var isShowingCamera = false
+    @State var data: Data? = nil
     
     private var userInfo = MainBean.shared.userInfo
+    var userId: String {
+        MainBean.shared.userID ?? "1"
+    }
     private var needEdit:Bool{
         return checkHasChange()
     }
@@ -96,29 +103,58 @@ struct ProfileEditVIew: View {
                 date = userInfo?.birthday ?? ""
                 selectedSegment = userInfo?.sex == "MALE" ? 0 : 1
             }
-            .sheet(isPresented: $isImagePickerPresented) {
-                ImagePicker(selectedImage: $selectedImage)
+            .alert(isPresented: $showAlert) {
+                Alert(
+                    title: Text(Localize.camera),
+                    message: Text(Localize.cameraRequired),
+                    primaryButton: .default(Text(Localize.settings)) {
+                        self.viewModel.openSettings()
+                    },
+                    secondaryButton: .cancel()
+                )
             }
+            .sheet(isPresented: $isShowPicker) {
+                ImagePicker(
+                    imageData: $data,
+                    onImagePicked: { imageData in
+                        uploadImageToFirebase(data: imageData, userId: userId)
+                    }
+                )
+            }
+            .sheet(
+                isPresented: $isShowingCamera,
+                content: {
+                    CameraPickerView { image in
+                        self.data = image.pngData()
+                        if let data = data {
+                            uploadImageToFirebase(data: data, userId: userId)
+                        }
+                    }
+                }
+            )
     }
     
     @ViewBuilder
     private func imagePicker(profileImage:UIImage?) -> some View {
         ZStack{
-            if profileImage == nil {
-                Image("ic_profile")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 70, height: 70)
-            } else {
-                Image(uiImage: profileImage ?? UIImage(named: "ic_profile")!)
+            if let data = data, let image = UIImage(data: data) {
+                Image(uiImage: image)
                     .resizable()
                     .scaledToFill()
                     .frame(width: 100, height: 100)
                     .cornerRadius(50, corners: .allCorners)
-                   
+            } else if let imageData:[Data] = UDManager.shared.getObject(key: .profileImage), let imageIn = imageData.first, let image = UIImage(data: imageIn)  {
+                Image(uiImage: image)
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 100, height: 100)
+                    .cornerRadius(50, corners: .allCorners)
+            } else {
+                Image("ic_profile")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 70, height: 70)
             }
-           
-            
             ZStack {
                 Colors.background
                 ZStack {
@@ -138,9 +174,13 @@ struct ProfileEditVIew: View {
                 RoundedRectangle(cornerRadius: 50, style: .continuous)
             ).foregroundColor(Colors.green)
             .onTapGesture {
-                isImagePickerPresented = true
+                showingOptions = true
+            }
+            .actionSheet(isPresented: $showingOptions) {
+                actionSheet()
             }
     }
+    
     
     private func checkHasChange() -> Bool {
         let initName = userInfo?.name ?? ""
@@ -159,52 +199,58 @@ struct ProfileEditVIew: View {
     private func checkLogin()->Bool {
         return regByPhone ? userInfo?.phone ?? "" == "998\(phone)" : userInfo?.email ?? "" == email
     }
-    
 }
 
-struct ImagePicker: UIViewControllerRepresentable {
-    @Binding var selectedImage: UIImage?
-    @Environment(\.dismiss) private var dismiss
 
-    func makeUIViewController(context: Context) -> PHPickerViewController {
-        var config = PHPickerConfiguration()
-        config.filter = .images // Limit to images only
-        config.selectionLimit = 1 // Allow only one image to be selected
+extension ProfileEditVIew {
 
-        let picker = PHPickerViewController(configuration: config)
-        picker.delegate = context.coordinator
-        return picker
-    }
-
-    func updateUIViewController(_ uiViewController: PHPickerViewController, context: Context) {
-        // No updates needed
-    }
-
-    func makeCoordinator() -> Coordinator {
-        Coordinator(self)
-    }
-
-    class Coordinator: NSObject, PHPickerViewControllerDelegate {
-        let parent: ImagePicker
-
-        init(_ parent: ImagePicker) {
-            self.parent = parent
-        }
-
-        func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
-            parent.dismiss()
-
-            guard let provider = results.first?.itemProvider else { return }
-
-            if provider.canLoadObject(ofClass: UIImage.self) {
-                provider.loadObject(ofClass: UIImage.self) { image, error in
-                    DispatchQueue.main.async {
-                        if let uiImage = image as? UIImage {
-                            self.parent.selectedImage = uiImage
+    func actionSheet() -> ActionSheet {
+        if let imageData:[Data] = UDManager.shared.getObject(key: .profileImage) {
+            print(imageData)
+            return ActionSheet(
+                title: Text(Localize.uploadImage),
+                buttons: [
+                    .default( Text(Localize.camera) ) {
+                        if self.viewModel.isCameraPermissionEnabled() {
+                            isShowingCamera = true
+                        } else {
+                            showAlert = true
                         }
-                    }
-                }
-            }
+                    },
+                    .default(Text(Localize.galery)) {
+                        isShowPicker = true
+                    },
+                    .default( Text(Localize.delete) ) {
+                        deleteProfileImage()
+                    },
+                    .cancel( Text(Localize.cancel) )
+                ]
+            )
+        } else {
+            return ActionSheet(
+                title: Text(Localize.uploadImage),
+                buttons: [
+                    .default( Text(Localize.camera) ) {
+                        if self.viewModel.isCameraPermissionEnabled() {
+                            isShowingCamera = true
+                        } else {
+                            showAlert = true
+                        }
+                    },
+                    .default( Text(Localize.galery) ) { isShowPicker = true },
+                    .cancel( Text(Localize.cancel) )
+                ]
+            )
         }
+    }
+    
+    func uploadImageToFirebase(data: Data, userId: String) {
+        UDManager.shared.setObject(key: .profileImage, object: [data])
+        NotificationCenter.default.post(name: .updateProfileImage, object: nil)
+    }
+    
+    func deleteProfileImage() {
+        UDManager.shared.setObject(key: .profileImage, object: [Data()])
+        NotificationCenter.default.post(name: .updateProfileImage, object: nil)
     }
 }
