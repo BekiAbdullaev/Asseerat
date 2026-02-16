@@ -30,7 +30,9 @@ struct LaunchView: View {
                 Image("splash_background")
                     .resizable()
                     .scaledToFill()
-            ).onDidLoad {
+            )
+            .onAppear {
+                self.setLanguage()
                 let login = UDManager.shared.getString(key: .userLogin)
                 let password = UDManager.shared.getString(key: .userPassword)
                 let loginType = UDManager.shared.getString(key: .userLoginType)
@@ -48,11 +50,10 @@ struct LaunchView: View {
                         self.coordinator.navigate(type: .auth(.login))
                     }
                 } else {
-                    self.coordinator.navigate(type: .auth(.onboarding))
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        self.coordinator.navigate(type: .auth(.onboarding))
+                    }
                 }
-            }
-            .onAppear {
-                self.setLanguage()
             }
     }
     
