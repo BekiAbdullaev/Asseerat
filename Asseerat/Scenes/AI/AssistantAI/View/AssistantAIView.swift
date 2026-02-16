@@ -80,8 +80,9 @@ struct AssistantAIView: View {
                 self.topTitle = Localize.whatCanIDo
                 self.getAllClientChats()
             } else {
-                self.topTitle = "Let's chat about\n\(firstPrompt)"
-                userAnswer = "Tell about \(firstPrompt)"
+                self.topTitle = String(format: Localize.letChatAbout, firstPrompt)
+                userAnswer = String(format: Localize.tellAbout, firstPrompt)
+                self.viewModel.modelID = "0"
                 submitAnswer()
             }
             if UDManager.shared.getString(key: .aiType) == "" {
@@ -165,7 +166,7 @@ extension AssistantAIView {
     private func navigationView() -> some View {
         ZStack {
             HStack {
-                ButtonFactory.button(type: .roundedWhite(image: "ic_gray_cancel", onClick: {
+                ButtonFactory.button(type: .roundedWhite(image: "ic_back", onClick: {
                     coordinator.dismiss()
                 }))
                 ButtonFactory.button(type: .roundedWhite(image: "ic_drag_drop", onClick: {
@@ -326,31 +327,17 @@ extension AssistantAIView {
             self.chatId = chatID
             recommendationsList = recommendations
             
-//            if viewModel.modelID == "2" {
-//                DispatchQueue.main.async {
-//                    pendingMessage = nil
-//                    let aiId = UUID()
-//                    let streamMessage = Message(content: "", isCurrentUser: false, timestamp: Date(), id: aiId, isStreaming: true)
-//                    messages.append(streamMessage)
-//                    scrollToBottom()
-//                    
-//                    if let idx = self.messages.firstIndex(where: { $0.id == aiId }) {
-//                        self.messages[idx].content += fullAnswer
-//                        self.scrollToBottom()
-//                    }
-//                }
-//            } else {
-                DispatchQueue.main.async {
-                    pendingMessage = nil
-                    
-                    let aiId = UUID()
-                    let placeholder = Message(content: "", isCurrentUser: false, timestamp: Date(), id: aiId, isStreaming: true)
-                    messages.append(placeholder)
-                    scrollToBottom()
+            DispatchQueue.main.async {
+                pendingMessage = nil
+                
+                let aiId = UUID()
+                let placeholder = Message(content: "", isCurrentUser: false, timestamp: Date(), id: aiId, isStreaming: true)
+                messages.append(placeholder)
+                scrollToBottom()
 
-                    startStreaming(answer: fullAnswer, for: aiId)
-                }
-            //}
+                startStreaming(answer: fullAnswer, for: aiId)
+            }
+         
         }
     }
     

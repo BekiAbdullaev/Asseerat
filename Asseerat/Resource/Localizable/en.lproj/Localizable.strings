@@ -321,3 +321,8 @@
 "uploadImage"="Upload image";
 "settings"="Settings";
 "cameraRequired"="You need to set permission to use camera.";
+"tellAbout"="Tell about %@";
+"letChatAbout"="Let's chat about\n %@";
+
+
+

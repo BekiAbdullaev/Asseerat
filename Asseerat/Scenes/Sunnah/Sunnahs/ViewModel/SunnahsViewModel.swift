@@ -37,32 +37,35 @@ class SunnahsViewModel: ObservableObject {
     let columns = [ GridItem(.flexible())]
     
     func setInitProgress() {
-        if let dayHabits = inithabitList?.filter({$0.frequency_type == "D" && $0.status != 2}){
+        if let dayHabits = inithabitList?.filter({$0.frequency_type == "D" && $0.status != 2}), dayHabits.count > 0 {
             recuiredCount = 0
             currentCount = 0
             currentType = "D"
             currentSunnahs = dayHabits
+            
             for habit in dayHabits {
                 recuiredCount += habit.required_count ?? 0
                 currentCount += habit.current_count ?? 0
             }
             self.changeInitProgress(curCount: currentCount, reqCount: recuiredCount, frequencyType: currentType)
 
-        } else if let weakHabits = inithabitList?.filter({$0.frequency_type == "W" && $0.status != 2}){
+        } else if let weakHabits = inithabitList?.filter({$0.frequency_type == "W" && $0.status != 2}), weakHabits.count > 0 {
             recuiredCount = 0
             currentCount = 0
             currentType = "W"
             currentSunnahs = weakHabits
+            
             for habit in weakHabits {
                 recuiredCount += habit.required_count ?? 0
                 currentCount += habit.current_count ?? 0
             }
             self.changeInitProgress(curCount: currentCount, reqCount: recuiredCount, frequencyType: currentType)
-        } else if let monthHabits = inithabitList?.filter({$0.frequency_type == "M" && $0.status != 2}) {
+        } else if let monthHabits = inithabitList?.filter({$0.frequency_type == "M" && $0.status != 2}), monthHabits.count > 0 {
             recuiredCount = 0
             currentCount = 0
             currentType = "M"
             currentSunnahs = monthHabits
+            
             for habit in monthHabits {
                 recuiredCount += habit.required_count ?? 0
                 currentCount += habit.current_count ?? 0

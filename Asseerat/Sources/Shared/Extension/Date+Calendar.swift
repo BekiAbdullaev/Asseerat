@@ -38,16 +38,17 @@ public typealias Strings = [String]
 
 public extension String {
     func getCustomDay() -> String {
-          let dateFormatter = DateFormatter()
-          dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
           
         guard let dateObj = dateFormatter.date(from: self.substring(toIndex: 19)) else {
-              return "Invalid date format"
-          }
+            return "Invalid date format"
+        }
           
-          dateFormatter.dateFormat = "dd.MM.yyyy"
-          return dateFormatter.string(from: dateObj)
-      }
+        dateFormatter.dateFormat = "dd.MM.yyyy"
+        return dateFormatter.string(from: dateObj)
+    }
+    
     func getCustomDayWithDots() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "ddMMyyyy"
@@ -55,6 +56,14 @@ public extension String {
 
         dateFormatter.dateFormat = "dd.MM.yyyy"
         return "\(dateFormatter.string(from: dateObj ?? Date()))"
+    }
+    
+    func removingChatID() -> String {
+        return self.replacingOccurrences(
+            of: #"\.CHAT_ID:\{\d+\}$"#,  // $ means end of string
+            with: "",
+            options: .regularExpression
+        )
     }
 }
 

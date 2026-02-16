@@ -15,9 +15,9 @@ struct AITypes:Hashable{
 
 class AssistantAIViewModel: ObservableObject {
     let listGridColumns = [GridItem(.flexible())]
-    @Published var listAITypes = [AITypes(name: "Global", id: "0"),
-                                  AITypes(name: "Vector", id: "1"),
-                                  AITypes(name: "Stream", id: "2"),
+    @Published var listAITypes = [AITypes(name: "Vector", id: "0"),
+                                  AITypes(name: "Stream", id: "1"),
+                                  AITypes(name: "Global", id: "2"),
                                   AITypes(name: "Default",id: "3")]
     
     @Published var responseText: String = ""
@@ -74,15 +74,12 @@ class AssistantAIViewModel: ObservableObject {
             var messages = ""
             networkManager.startStream(with: reqBody) { result in
                 messages += result
-                print("Mesage:\(messages)")
             } onComplete: { result in
                 switch result {
                 case .success:
-                    onComplete(chatId ?? 0, messages, [])
-                    print("✅ Stream completed")
+                    onComplete(chatId ?? 0, messages.removingChatID(), [])
                     self.stopStreaming()
                 case .failure(let error):
-                    print("❌ Stream error: \(error.localizedDescription)")
                     self.stopStreaming()
                     showTopAlert(title: error.localizedDescription)
                 }
@@ -105,11 +102,11 @@ class AssistantAIViewModel: ObservableObject {
     private func getModelName() -> String {
         switch modelID {
         case "0":
-            return "global"
-        case "1":
             return "vector"
-        case "2":
+        case "1":
             return "stream"
+        case "2":
+            return "global"
         default :
             return ""
         }

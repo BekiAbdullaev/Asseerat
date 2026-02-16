@@ -331,6 +331,6 @@ struct Localize {
     static var settings: String { "settings".localized }
     static var cameraRequired: String { "cameraRequired".localized }
     
-    
-    
+    static var tellAbout: String { "tellAbout".localized }
+    static var letChatAbout: String { "letChatAbout".localized }    
 }

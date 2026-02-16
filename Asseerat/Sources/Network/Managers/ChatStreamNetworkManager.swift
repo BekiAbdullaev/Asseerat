@@ -85,14 +85,16 @@ final class ChatStreamNetworkManager: NSObject {
     
     private func parseSSEEvent(_ event: String) {
         let lines = event.components(separatedBy: "\n")
-        
+            
         for line in lines {
             if line.hasPrefix("data:") {
-                let data = line
-                    .dropFirst(5)
-                    .trimmingCharacters(in: .whitespaces)
+                // Don't trim! Keep the spaces as sent by server
+                let data = String(line.dropFirst(5))
                 
-                // Notify on main thread
+                // Only skip if completely empty
+                guard !data.isEmpty else { continue }
+                
+                // Notify on main thread with original spacing
                 DispatchQueue.main.async { [weak self] in
                     self?.onDataReceived?(data)
                 }

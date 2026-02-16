@@ -320,3 +320,5 @@
 "uploadImage"="Rasmni yuklash";
 "settings"="Sozlamalar";
 "cameraRequired"="Kameradan foydalanish uchun ruxsatni o'rnatishingiz kerak.";
+"tellAbout"="%@ haqida gapirib ber";
+"letChatAbout"="Keling, %@\nhaqida suhbatlashamiz";
