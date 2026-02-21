@@ -83,6 +83,7 @@
 		AE44EF912E718D95002A2D10 /* AddHabitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE44EF902E718D95002A2D10 /* AddHabitModel.swift */; };
 		AE59139A2E1AFA0A00E01AF4 /* SunnahsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5913992E1AFA0A00E01AF4 /* SunnahsViewModel.swift */; };
 		AE6154A02F49C86C00179441 /* tasbeh_voice.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AE61549F2F49C86C00179441 /* tasbeh_voice.mp3 */; };
+		AE6156062F49D24D00179441 /* click.wav in Resources */ = {isa = PBXBuildFile; fileRef = AE6156052F49D24D00179441 /* click.wav */; };
 		AE6229702E95593D005FDC56 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE62296F2E95593D005FDC56 /* LocationModel.swift */; };
 		AE6229732E955CBD005FDC56 /* HomeARViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6229722E955CBD005FDC56 /* HomeARViewModel.swift */; };
 		AE6229762E955CCE005FDC56 /* HomeARModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6229752E955CCE005FDC56 /* HomeARModel.swift */; };
@@ -345,6 +346,7 @@
 		AE44EF922E71A4A9002A2D10 /* Asseerat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Asseerat.entitlements; sourceTree = "<group>"; };
 		AE5913992E1AFA0A00E01AF4 /* SunnahsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunnahsViewModel.swift; sourceTree = "<group>"; };
 		AE61549F2F49C86C00179441 /* tasbeh_voice.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tasbeh_voice.mp3; sourceTree = "<group>"; };
+		AE6156052F49D24D00179441 /* click.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = click.wav; sourceTree = "<group>"; };
 		AE62296F2E95593D005FDC56 /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
 		AE6229722E955CBD005FDC56 /* HomeARViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeARViewModel.swift; sourceTree = "<group>"; };
 		AE6229752E955CCE005FDC56 /* HomeARModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeARModel.swift; sourceTree = "<group>"; };
@@ -788,6 +790,7 @@
 			isa = PBXGroup;
 			children = (
 				AE61549F2F49C86C00179441 /* tasbeh_voice.mp3 */,
+				AE6156052F49D24D00179441 /* click.wav */,
 				AE6FF8C62F41DE4600E4E742 /* default.wav */,
 				AE1352422E8666A1002D19E0 /* audio_complete.wav */,
 			);
@@ -2351,6 +2354,7 @@
 				AE7150642DFECC3500249038 /* Inter-Bold.ttf in Resources */,
 				AE7150652DFECC3500249038 /* Inter-SemiBold.ttf in Resources */,
 				7C7FB1A82ECB97030028BC99 /* Localizable.strings in Resources */,
+				AE6156062F49D24D00179441 /* click.wav in Resources */,
 				AE7150662DFECC3500249038 /* Inter-Medium.ttf in Resources */,
 				AEC36F742DF94001006B033C /* Preview Assets.xcassets in Resources */,
 				AE1A595F2ED223130042CE51 /* GoogleService-Info.plist in Resources */,
@@ -2746,7 +2750,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Asseerat/Asseerat.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 14;
 				DEVELOPMENT_ASSET_PATHS = "\"Asseerat/Preview Content\"";
 				DEVELOPMENT_TEAM = WR6Q5NF99N;
 				ENABLE_PREVIEWS = YES;
@@ -2788,7 +2792,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Asseerat/Asseerat.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 14;
 				DEVELOPMENT_ASSET_PATHS = "\"Asseerat/Preview Content\"";
 				DEVELOPMENT_TEAM = WR6Q5NF99N;
 				ENABLE_PREVIEWS = YES;

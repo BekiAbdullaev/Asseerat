@@ -291,7 +291,7 @@ extension DhikrsView {
     }
     
     func playTouch() {
-        guard let url = Bundle.main.url(forResource: "tasbeh_voice", withExtension: "mp3") else { return }
+        guard let url = Bundle.main.url(forResource: "click", withExtension: "wav") else { return }
         audioPlayer = try? AVAudioPlayer(contentsOf: url)
         audioPlayer?.play()
     }
