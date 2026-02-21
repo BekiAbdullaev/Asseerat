@@ -6,46 +6,32 @@
 //
 
 import SwiftUI
-
-struct DhikrSavedItem:Codable, Identifiable {
-    var id = UUID()
-    var name:String
-    var counts:[DhikrCountItem]
-    var round:Int
-    var isActive:Bool
-}
-
-struct DhikrCountItem:Codable {
-    var count:Int
-    var date:String
-}
+import AVFoundation
 
 struct DhikrsView: View {
     
     private var prograssSize:CGFloat = biometricType() == .face ? 300 : 240
     @EnvironmentObject var coordinator: Coordinator<MainRouter>
-    
     @ObservedObject private var viewModel:DhikrsViewModel
+    private let impactFeedback = UIImpactFeedbackGenerator(style: .light)
     
-    let impactFeedback = UIImpactFeedbackGenerator(style: .light)
+    @State private var bindedDhikrs = [DhikrsModel.Response.BindedDhikrsRows]()
+    @State private var currentDhikr:DhikrsModel.Response.BindedDhikrsRows?
+    @State private var saveCounter: Task<Void, Never>? = nil
     @State var todayCount:String = "0"
     @State var allCount:String = "0"
     @State var localCount:Int = 0
+    @State var counter:Int = 0
+    @State var lastSavedcounter:Int = 0
     @State var progress:CGFloat = 0.0
-    @State var dhikr:DhikrSavedItem? {
-        didSet {
-            if let dhikr = dhikr {
-                todayCount = getTodayCount(curItem: dhikr)
-                allCount = getAllCount(curItem: dhikr)
-            }
-        }
-    }
-    @State private var bindedDhikrs = [DhikrsModel.Response.BindedDhikrsRows]()
+    @State private var currentDhikrIndex: Int = 0
+    @State private var isMuted: Bool = true
+    @State private var audioPlayer: AVAudioPlayer?
     
     init(viewModel:DhikrsViewModel) {
         self.viewModel = viewModel
     }
-   
+    
     var body: some View {
         VStack {
             self.navigationView()
@@ -67,36 +53,29 @@ struct DhikrsView: View {
                 }
             }
     }
-    
-    private func getBindedDhikrs() {
-        
-        self.viewModel.getBindedDhikrs { bindedDhikrs in
-            if bindedDhikrs.isEmpty {
-                self.viewModel.getDhikrTemplates { templates in
-                    if let initDhikr = templates.filter({$0.type == "TEMPLATE"}).last {
-                        let clientId = SecurityBean.shared.userId
-                        let tempId:String = String(initDhikr.id ?? 0)
-                        let reqBody = DhikrsModel.Request.DhikrBind(client_id: clientId, template_id: tempId)
-                        self.viewModel.bindDhikr(reqBody: reqBody) {
-                            self.viewModel.getBindedDhikrs { dhikrs in
-                                self.bindedDhikrs = dhikrs
-                            }
-                        }
-                    }
-                }
-            } else {
-                self.bindedDhikrs = bindedDhikrs
-            }
-        }
-    }
-    
+}
+
+// Header view
+extension DhikrsView {
     @ViewBuilder
     private func navigationView() -> some View {
         ZStack {
             HStack(alignment:.center, spacing:10){
                 TextFactory.text(type: .regular(text: Localize.dhikr, font: .reg24, line: 1)).padding(.leading,16)
                 Spacer()
-                ButtonFactory.button(type: .roundedWhite(image: "ic_voice", onClick: {}))
+                
+                ZStack{
+                    Image(systemName: isMuted ? "speaker.slash.fill" : "speaker.wave.2.fill")
+                        .resizable()
+                        .foregroundStyle(.white)
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 22, height: 22)
+                }.frame(width: 42, height: 42, alignment: .center)
+                    .background( RoundedRectangle(cornerRadius: 21, style: .continuous).fill(Colors.green) )
+                    .onTapGesture {
+                        isMuted.toggle()
+                    }
+        
                 ButtonFactory.button(type: .roundedWhite(image: "ic_refresh", onClick: {
                     localCount = 0
                     incrementProgress()
@@ -104,7 +83,6 @@ struct DhikrsView: View {
             }
         }.frame(height: 42).frame(maxWidth:.infinity).padding(.top,8)
     }
-    
     
     @ViewBuilder
     private func headerView() -> some View {
@@ -116,18 +94,6 @@ struct DhikrsView: View {
             }
         }.padding(.horizontal,16).padding(.top, biometricType() == .face ? 16 : 10)
     }
-    
-    
-    @ViewBuilder
-    private func bodyView() -> some View {
-        TabView {
-            ForEach(bindedDhikrs, id: \.self) { item in
-                dhikrInfoView(item: item)
-            }
-        }.tabViewStyle(.page)
-            .indexViewStyle(.page(backgroundDisplayMode: .automatic))
-    }
-    
     
     @ViewBuilder
     private func infoView(_ title:String, _ subtitle:String) -> some View {
@@ -143,8 +109,6 @@ struct DhikrsView: View {
                     .fill(Colors.green)
             )
     }
-    
-    
     
     @ViewBuilder
     private func rateView(_ title:String) -> some View {
@@ -166,7 +130,32 @@ struct DhikrsView: View {
                     .fill(Colors.green)
             )
     }
-    
+}
+
+
+// Body view
+extension DhikrsView {
+    @ViewBuilder
+    private func bodyView() -> some View {
+        TabView(selection:$currentDhikrIndex) {
+            ForEach(bindedDhikrs.indices, id: \.self) { index in
+                dhikrInfoView(item: bindedDhikrs[index])
+                    .tag(index)
+            }
+        }.tabViewStyle(.page)
+            .indexViewStyle(.page(backgroundDisplayMode: .automatic))
+            .onChange(of: currentDhikrIndex) { _,newIndex in
+                if counter > 0 {
+                    self.incrementSelectedDhikr()
+                }
+                let curDihkr = bindedDhikrs[newIndex]
+                self.setInitDhkir(dhikr: curDihkr)
+                lastSavedcounter = 0
+                counter = 0
+                localCount = 0
+                incrementProgress()
+            }
+    }
     
     
     @ViewBuilder
@@ -183,12 +172,12 @@ struct DhikrsView: View {
                         TextFactory.text(type: .regular(text: Localize.rounds, font: .reg12, color: .seccondary)).padding(.leading,12)
                         Spacer()
                         TextFactory.text(type: .regular(text: "1", font: .reg14))
-                            .padding(.vertical,5).padding(.horizontal,8)
+                            .padding(.vertical,5).padding(.horizontal,10)
                             .background(
                                 RoundedRectangle(cornerRadius: 14, style: .continuous)
                                     .fill(Colors.green)
                             ).padding(.trailing, 2)
-                    }.frame(width: 100,height: 34)
+                    }.frame(width: 110,height: 34)
                         .background(
                             RoundedRectangle(cornerRadius: 17, style: .continuous)
                                 .fill(Colors.background)
@@ -244,31 +233,87 @@ struct DhikrsView: View {
                 impactFeedback.impactOccurred()
                 self.incrementLocalCount()
                 self.incrementProgress()
+                if !isMuted {
+                    playTouch()
+                }
             }
             Spacer()
         }
     }
-    
-    
-    func getTodayCount(curItem:DhikrSavedItem) -> String {
-        var todayCount = 0
-        for item in curItem.counts {
-            if item.date == Date().ddmmyyyy{
-                todayCount = item.count
+}
+
+
+extension DhikrsView {
+    private func getBindedDhikrs() {
+        self.viewModel.getBindedDhikrs { bindedDhikrs in
+            if bindedDhikrs.isEmpty {
+                self.viewModel.getDhikrTemplates { templates in
+                    if let initDhikr = templates.filter({$0.type == "TEMPLATE"}).last {
+                        let clientId = SecurityBean.shared.userId
+                        let tempId:String = String(initDhikr.id ?? 0)
+                        
+                        let reqBody = DhikrsModel.Request.DhikrBind(client_id: clientId, template_id: tempId)
+                        self.viewModel.bindDhikr(reqBody: reqBody) {
+                            self.viewModel.getBindedDhikrs { dhikrs in
+                                self.bindedDhikrs = dhikrs
+                                self.setInitDhkir(dhikr: self.bindedDhikrs.first)
+                            }
+                        }
+                    }
+                }
+            } else {
+                self.bindedDhikrs = bindedDhikrs
+                self.setInitDhkir(dhikr: self.bindedDhikrs.first)
             }
         }
+    }
+    
+
+    private func incrementSelectedDhikr() {
         
-        return String(todayCount)
-    }
-    
-    func getAllCount(curItem:DhikrSavedItem) -> String {
-        var allCount = 0
-        for item in curItem.counts {
-            allCount += item.count
+        let clientId = SecurityBean.shared.userId
+        let id:Int = self.currentDhikr?.id ?? 0
+        let count = self.counter - self.lastSavedcounter
+        
+        // Increment today count
+        if var items:[DhikrSavedItem] = UDManager.shared.getObject(key: .dhikrCount), let item = items.filter({$0.id == id}).first {
+            let newItem = DhikrSavedItem(id: id, count: item.count + count, date: Date().ddmmyyyy)
+            items.removeAll(where: {$0.id == id})
+            items.append(newItem)
+            UDManager.shared.setObject(key: .dhikrCount, object: items)
         }
-        return String(allCount)
+        
+        // Increment all count
+        let reqBody = DhikrsModel.Request.DhikrIncrement(id: id, count: count, client_id: clientId)
+        self.viewModel.incrementDhikr(reqBody: reqBody) {
+            self.lastSavedcounter = counter
+        }
     }
     
+    func playTouch() {
+        guard let url = Bundle.main.url(forResource: "tasbeh_voice", withExtension: "mp3") else { return }
+        audioPlayer = try? AVAudioPlayer(contentsOf: url)
+        audioPlayer?.play()
+    }
+}
+
+
+extension DhikrsView {
+    func setNotification() {
+        NotificationCenter.default.addObserver(forName: .updateBindedDhikr, object: nil, queue: .main) { _ in
+            self.getBindedDhikrs()
+        }
+    }
+    
+    private func setInitDhkir(dhikr:DhikrsModel.Response.BindedDhikrsRows?) {
+        if let initDhikr = dhikr {
+            self.currentDhikr = initDhikr
+            self.allCount = String(initDhikr.count ?? 0)
+            self.getLocalCount(id: initDhikr.id ?? 0)
+        }
+    }
+    
+
     func incrementProgress() {
         withAnimation(.easeInOut(duration: 0.4)) {
             progress = localCount == 0 ? 0.0 : CGFloat(Float(localCount)/33)
@@ -277,47 +322,52 @@ struct DhikrsView: View {
     
     func incrementLocalCount() {
         localCount = (localCount % 33) + 1
-        self.incrementLifetimeCount()
+        counter += 1
+        self.incrementCountBySchedule()
+        self.incrementCountForLocal()
     }
     
-    func incrementLifetimeCount() {
-        guard let dhikr = self.dhikr else { return }
-        var count = 0
-        var counts = dhikr.counts
-        
-        for item in counts {
-            if item.date == Date().ddmmyyyy {
-                count = item.count
-            }
-        }
-        count += 1
-        
-        if counts.contains(where: {$0.date == Date().ddmmyyyy}) {
-            counts.removeAll(where: {$0.date == Date().ddmmyyyy})
-            counts.append(.init(count: count, date: Date().ddmmyyyy))
-        } else {
-            counts.append(.init(count: count, date: Date().ddmmyyyy))
-        }
-        
-        let tempItem = DhikrSavedItem(name: dhikr.name, counts: counts, round: dhikr.round, isActive: dhikr.isActive)
-        self.dhikr = tempItem
-        
-        if var items:[DhikrSavedItem] = UDManager.shared.getObject(key: .dhikrCount) {
-            items.removeAll(where: {$0.isActive == true})
-            items.append(tempItem)
-            UDManager.shared.setObject(key: .dhikrCount, object: items)
+    func incrementCountBySchedule() {
+        saveCounter?.cancel()
+        saveCounter = Task {
+            try? await Task.sleep(nanoseconds: 1_000_000_000)
+            guard !Task.isCancelled else { return }
+            self.incrementSelectedDhikr()
+            print("Counter saved: \(counter)")
         }
     }
-}
-
-extension DhikrsView {
-    func setNotification() {
-        NotificationCenter.default.addObserver(
-            forName: .updateBindedDhikr,
-            object: nil,
-            queue: .main) { _ in
-                self.getBindedDhikrs()
+        
+    func incrementCountForLocal(){
+        let curAllCount = Int(self.allCount) ?? 0
+        self.allCount = String(curAllCount + 1)
+        
+        let curTodayCount = Int(self.todayCount) ?? 0
+        self.todayCount = String(curTodayCount + 1)
+    }
+    
+    
+    func getLocalCount(id:Int) {
+        if var items:[DhikrSavedItem] = UDManager.shared.getObject(key: .dhikrCount){
+            if let item = items.filter({$0.id == id}).first {
+                if item.date != Date().ddmmyyyy {
+                    self.todayCount = "0"
+                    let newItem = DhikrSavedItem.init(id: item.id, count: 0, date: Date().ddmmyyyy)
+                    items.removeAll(where: {$0.id == id})
+                    items.append(newItem)
+                    UDManager.shared.setObject(key: .dhikrCount, object: items)
+                } else {
+                    self.todayCount = String(item.count)
+                }
+            } else {
+                items.append(DhikrSavedItem(id: id, count: 0, date: Date().ddmmyyyy))
+                UDManager.shared.setObject(key: .dhikrCount, object: items)
             }
+        
+        } else {
+            var items = [DhikrSavedItem]()
+            items.append(DhikrSavedItem(id: id, count: 0, date: Date().ddmmyyyy))
+            UDManager.shared.setObject(key: .dhikrCount, object: items)
+        }
     }
 }
 

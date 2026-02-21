@@ -7,6 +7,17 @@
 
 import Foundation
 
+struct DhikrSavedItem:Codable {
+    var id:Int
+    var count:Int
+    var date:String
+}
+
+//struct DhikrCountItem:Codable {
+//    var count:Int
+//    var date:String
+//}
+
 enum DhikrsModel {
     struct Request{
         

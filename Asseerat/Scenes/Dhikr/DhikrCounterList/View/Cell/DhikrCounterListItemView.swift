@@ -42,7 +42,7 @@ struct DhikrCounterListItemView: View {
                 }
                 HStack(spacing:12) {
                     TextFactory.text(type: .regular(text: "\(Localize.count): \(self.count)", font: .reg12, color: .seccondary))
-                    TextFactory.text(type: .regular(text: "\(Localize.rounds): \(0)", font: .reg12, color: .seccondary))
+                    TextFactory.text(type: .regular(text: "\(Localize.rounds): \(1)", font: .reg12, color: .seccondary))
                     Spacer()
                 }
             }

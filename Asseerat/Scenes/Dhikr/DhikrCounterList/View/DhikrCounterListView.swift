@@ -79,6 +79,10 @@ struct DhikrCounterListView: View {
         infoActionAlert(title: "\(Localize.delete) \(item.text ?? "\(Localize.item)")", subtitle: "\(Localize.areYouSureToDelete) \(item.text ?? "\(Localize.thisItem)")?", lBtn: "\(Localize.no)", rBtn: "\(Localize.delete)", rBtnOnClick: {
             let id:String = String(item.id ?? 0)
             self.viewModel.deleteDhikrTemplate(id: id) {
+                if var items:[DhikrSavedItem] = UDManager.shared.getObject(key: .dhikrCount){
+                    items.removeAll(where: {$0.id == item.id})
+                    UDManager.shared.setObject(key: .dhikrCount, object: items)
+                }
                 self.getDhikrs()
             }
         })

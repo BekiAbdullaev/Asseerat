@@ -173,7 +173,7 @@ class SunnahsViewModel: ObservableObject {
     }
     
     func getSunnahTemplates(onComplete:@escaping(([AddHabitModel.SunnahTemplatesRows])->())) {
-        NetworkManager(hudType: .authorized).request(SunnahAPI.getSunnahTemplates) { (response:AddHabitModel.Response.SunnahTemplatesResponse) in
+        NetworkManager(hudType: .noHud).request(SunnahAPI.getSunnahTemplates) { (response:AddHabitModel.Response.SunnahTemplatesResponse) in
             if let rows = response.rows, !rows.isEmpty {
                 onComplete(rows)
             }
@@ -192,7 +192,7 @@ class SunnahsViewModel: ObservableObject {
     
     func getHabitRecords(habitId:Int, fromDate:String, toDate:String, onComplete:@escaping(()->())) {
         let userId = SecurityBean.shared.userId
-        NetworkManager(hudType: .authorized).request(SunnahAPI.getHabitRecords(client_id: userId, habit_id: habitId, from_date: fromDate, to_date: toDate)) { (response:SunnahModel.Response.GetHabitRecordsResponse) in
+        NetworkManager(hudType: .noHud).request(SunnahAPI.getHabitRecords(client_id: userId, habit_id: habitId, from_date: fromDate, to_date: toDate)) { (response:SunnahModel.Response.GetHabitRecordsResponse) in
             onComplete()
         } failure: { error in
             showTopAlert(title: error?.reason ?? "Something wrong...")
@@ -200,7 +200,7 @@ class SunnahsViewModel: ObservableObject {
     }
     
     func skipHabit(habitId:String, onComplete:@escaping(()->())) {
-        NetworkManager(hudType: .authorized).request(SunnahAPI.skipHabit(id: habitId)) { (response:DefaultResponse) in
+        NetworkManager(hudType: .noHud).request(SunnahAPI.skipHabit(id: habitId)) { (response:DefaultResponse) in
             onComplete()
         } failure: { error in
             showTopAlert(title: error?.reason ?? "Something wrong...")
@@ -208,7 +208,7 @@ class SunnahsViewModel: ObservableObject {
     }
     
     func unskipHabit(habitId:String, onComplete:@escaping(()->())) {
-        NetworkManager(hudType: .authorized).request(SunnahAPI.unskipHabit(id: habitId)) { (response:DefaultResponse) in
+        NetworkManager(hudType: .noHud).request(SunnahAPI.unskipHabit(id: habitId)) { (response:DefaultResponse) in
             onComplete()
         } failure: { error in
             showTopAlert(title: error?.reason ?? "Something wrong...")
@@ -216,7 +216,7 @@ class SunnahsViewModel: ObservableObject {
     }
     
     func deleteHabit(habitId:String, onComplete:@escaping(()->())) {
-        NetworkManager(hudType: .authorized).request(SunnahAPI.deleteHabit(id: habitId)) { (response:DefaultResponse) in
+        NetworkManager(hudType: .noHud).request(SunnahAPI.deleteHabit(id: habitId)) { (response:DefaultResponse) in
             onComplete()
         } failure: { error in
             showTopAlert(title: error?.reason ?? "Something wrong...")
